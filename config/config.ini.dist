@@ -1,0 +1,7 @@
+; Config file for Statum
+[database]
+hostname=localhost
+port=3306
+username=root
+password=password
+db=database
