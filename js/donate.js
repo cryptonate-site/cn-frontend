@@ -7,7 +7,7 @@ function check_transaction(txn_id) {
         dataType: "json",
         success: function(resp) {
             console.log(resp);
-            if(resp.completed) {
+            if(resp.completed === true) {
                 clearInterval(chkTxnLoop);
             }
         },
@@ -37,7 +37,7 @@ $("#submit-btn").on('click',function () {
             $("#btc-wallet-id").text(resp.send_to);
             $("#confirmation-date").text(new Date(Date.now() + (resp.timeout * 1000)).toTimeString());
             $("#payment-modal").modal("show");
-            chkTxnLoop = setInterval(1000, check_transaction(resp.txn_id));
+            chkTxnLoop = setInterval(1000, check_transaction(resp.orderId));
         },
         error: function () {
             alert("An error occurred creating your transaction! Please try again later.");
