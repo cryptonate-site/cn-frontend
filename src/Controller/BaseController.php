@@ -25,6 +25,10 @@ class BaseController extends Controller
         "GET:dashboard" => "dashboard"
     ];
 
+    public function index() {
+        echo "meme";
+    }
+
     public function dashboard() {
         $page = new HomePage();
         $page->execute();
