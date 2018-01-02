@@ -24,7 +24,7 @@ class LoginController extends Controller
 
     public function process_login($request, $response) {
         if(isset($request->username) && isset($request->password) && isset($request->nonce)) {
-            $val = Capsule::table("users")->where('username', $request->username)->first();
+            $val = Capsule::table("users")->where('email', $request->username)->first();
             if(password_verify($request->password, $val->password)) {
                 $_SESSION['login'] = $val->id;
                 if($request->remember) {
