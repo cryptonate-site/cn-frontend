@@ -9,6 +9,7 @@
 namespace Me\Controller;
 
 
+use Me\Models\User;
 use Me\Views\DonatePage;
 use Me\Views\HomePage;
 
