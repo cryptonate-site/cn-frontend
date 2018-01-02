@@ -90,6 +90,8 @@
             </div>
         </div>
     </div>
+{/block}
+{block name='extra-scripts'}
     <script>
         var forUser = {{$userID}};
     </script>
