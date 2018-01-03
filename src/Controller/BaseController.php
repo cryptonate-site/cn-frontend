@@ -10,6 +10,7 @@ namespace Me\Controller;
 
 
 use Me\Models\User;
+use Me\Services\AuthService;
 use Me\Views\DonatePage;
 use Me\Views\DashboardPage;
 
@@ -32,7 +33,8 @@ class BaseController extends Controller
 
     public function dashboard() {
         $page = new DashboardPage();
-        $page->execute();
+        $user = AuthService::get_user();
+        $page->execute(["streamer_name"=>$user->first_name . " " . $user->last_name]);
     }
 
     public function donate($req, $res) {

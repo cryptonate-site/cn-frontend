@@ -19,6 +19,9 @@ class DashboardPage extends View
     }
 
     public function execute($args = null) {
+        foreach($args as $k=>$v) {
+            parent::$engine->assign($k, $v);
+        }
         parent::$engine->display('index.tpl');
     }
 }

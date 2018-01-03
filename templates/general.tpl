@@ -29,7 +29,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-{block name='body'}Page not rendered{/block}
+{block name='body'}{/block}
 
 </body>
 
