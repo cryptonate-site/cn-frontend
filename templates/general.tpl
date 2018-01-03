@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/index.php"><span>Crypto</span>nate</a>
+            <a class="navbar-brand" href="/"><span>Crypto</span>nate</a>
         </div>
     </div><!-- /.container-fluid -->
 </nav>

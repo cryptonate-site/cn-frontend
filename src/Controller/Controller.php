@@ -82,7 +82,11 @@ class Controller
         }
     }
 
-    public function login() {
+    public function login($req, $res) {
+        if(AuthService::is_authed()) {
+            $res->redirect("/dashboard")->send();
+            return;
+        }
         $page = new LoginPage();
         $page->execute(['warning' => 'You need to login to view this page!']);
     }
