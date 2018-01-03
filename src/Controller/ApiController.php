@@ -17,7 +17,7 @@ use Me\Services\AuthService;
 
 class ApiController extends Controller
 {
-    protected $prefix = "/api-back/";
+    protected $prefix = "/frontapi/";
     protected $routes = [
         "GET:generate" => "generate_pass"
     ];
