@@ -49,7 +49,7 @@ class LoginController extends Controller
     public function process_logout($request, $response) {
         unset($_SESSION['login']);
         setcookie("login_token", null, 0);
-        setcookie("username", null, 0);
+        setcookie("userid", null, 0);
         $response->redirect("/")->send();
     }
 }

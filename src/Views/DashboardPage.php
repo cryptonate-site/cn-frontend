@@ -11,7 +11,7 @@ namespace Me\Views;
 
 use Smarty;
 
-class HomePage extends View
+class DashboardPage extends View
 {
     public function __construct()
     {

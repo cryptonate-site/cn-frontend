@@ -11,7 +11,7 @@ namespace Me\Controller;
 
 use Me\Models\User;
 use Me\Views\DonatePage;
-use Me\Views\HomePage;
+use Me\Views\DashboardPage;
 
 class BaseController extends Controller
 {
@@ -31,7 +31,7 @@ class BaseController extends Controller
     }
 
     public function dashboard() {
-        $page = new HomePage();
+        $page = new DashboardPage();
         $page->execute();
     }
 
