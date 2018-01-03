@@ -39,7 +39,7 @@ $("#submit-btn").on('click',function () {
             $("#btc-wallet-id").text(resp.send_to);
             $("#confirmation-date").text(new Date(Date.now() + (resp.timeout * 1000)).toTimeString());
             $("#payment-modal").modal("show");
-            chkTxnLoop = setInterval(check_transaction(resp.orderId), 1000);
+            chkTxnLoop = setInterval(function () {check_transaction(resp.orderId);}, 1000);
         },
         error: function () {
             alert("An error occurred creating your transaction! Please try again later.");
