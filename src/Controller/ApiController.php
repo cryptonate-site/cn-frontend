@@ -8,18 +8,12 @@
 
 namespace Me\Controller;
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-
-use Klein\Request;
-use Klein\Response;
-use Me\Exceptions\NotAuthedException;
-use Me\Services\AuthService;
-
 class ApiController extends Controller
 {
     protected $prefix = "/frontapi/";
     protected $routes = [
-        "GET:generate" => "generate_pass"
+        "GET:generate" => "generate_pass",
+        "GET:dash/graph_data" => "get_graph_data"
     ];
 
     public function generate_pass($request, $response) {
