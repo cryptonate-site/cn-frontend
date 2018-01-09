@@ -58,9 +58,10 @@ class DashboardPage extends View
     private function generate_dates() {
         $dates = [];
         $current_date = new DateTime();
+        $current_date->sub(new \DateInterval("P7D"));
         for($i = 0; $i < 7; $i++) {
             $dates[$current_date->format("Y-m-d")] = 0;
-            $current_date->sub(new \DateInterval("P1D"));
+            $current_date->add(new \DateInterval("P1D"));
         }
         return $dates;
     }
