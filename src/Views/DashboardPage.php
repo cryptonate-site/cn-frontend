@@ -28,7 +28,7 @@ class DashboardPage extends View
 
         $data = $this->generate_dates();
         foreach($db_data as $id=>$info) {
-            $data[$info->DateOnly] = $info->total;
+            $data[$info->DateOnly] = $info->TransactionCount;
         }
 
         $response = [
@@ -49,7 +49,7 @@ class DashboardPage extends View
 
         foreach($data as $date=>$datum) {
             $response["labels"][] = $date;
-            $response["datasets"][0][] = $datum;
+            $response["datasets"][0]["data"][] = $datum;
         }
 
         return json_encode($response);
@@ -59,7 +59,7 @@ class DashboardPage extends View
         $dates = [];
         $current_date = new DateTime();
         for($i = 6; $i >= 0; $i--) {
-            $dates[$current_date->format("YYYY-MM-DD")] = 0;
+            $dates[$current_date->format("Y-m-d")] = 0;
             $current_date->sub(new \DateInterval("P1D"));
         }
         return $dates;
