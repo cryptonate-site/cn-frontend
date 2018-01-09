@@ -10,7 +10,7 @@ namespace Me\Views;
 
 
 use DateTime;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Capsule\Manager as DB;
 use Me\Services\AuthService;
 use Smarty;
 
@@ -23,9 +23,8 @@ class DashboardPage extends View
 
     public function get_graph_data() {
         $user = AuthService::get_user();
-        $db_data = DB::select("SELECT SUM(*), DATE(creation_time) DateOnly, DATENAME(dw, creation_time) DateName" .
-            " FROM `transactions` WHERE to_email=:userID AND order_status=2 AND " .
-            " AND creation_time >= DATEADD(DAY, -7, GETDATE()) GROUP BY DateOnly", ["userID"=>$user->id]);
+        $db_data = DB::select("SELECT COUNT(1) TransactionCount, DATE(creation_time) DateOnly FROM `transactions`" .
+            " WHERE to_email=:userID AND order_status=2 AND creation_time >= SUBDATE(CURRENT_DATE, INTERVAL 7 DAY) GROUP BY DateOnly", ["userID"=>$user->id]);
 
         $data = $this->generate_dates();
         foreach($db_data as $id=>$info) {

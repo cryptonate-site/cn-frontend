@@ -12,8 +12,7 @@ class ApiController extends Controller
 {
     protected $prefix = "/frontapi/";
     protected $routes = [
-        "GET:generate" => "generate_pass",
-        "GET:dash/graph_data" => "get_graph_data"
+        "GET:generate" => "generate_pass"
     ];
 
     public function generate_pass($request, $response) {
