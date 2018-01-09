@@ -69,6 +69,6 @@
     <script>
         var ctx = document.getElementById("line-chart").getContext("2d");
         lineChartData = {$graph_json};
-        var chart = new Chart(ctx, lineChartData);
+        var chart = new Chart(ctx).Line(lineChartData);
     </script>
 {/block}
