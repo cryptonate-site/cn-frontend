@@ -35,7 +35,7 @@ class DashboardController extends Controller
 
     public function get_settings() {
         $page = new DashboardView("settings.tpl");
-        $page->execute();
+        $page->execute(["page_name" => "Settings"]);
     }
 
     public function post_settings($req, $res) {

@@ -6,7 +6,7 @@
                 {if isset($warning)}
                 <div class="alert alert-danger">{$warning}</div>
                 {elseif isset($success)}
-                    <div class="alert alert-success">{ $success}</div>
+                    <div class="alert alert-success">{$success}</div>
                 {/if}
             </div>
             <form action="/dashboard/settings" method="POST">

@@ -14,7 +14,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Kernel
 {
-    public $controllers = ['Controller', 'ApiController', 'BaseController', 'LoginController'];
+    public $controllers = ['Controller', 'ApiController', 'BaseController', 'LoginController', 'DashboardController'];
     public $config;
     protected static $instance;
     public function __construct($klein) {

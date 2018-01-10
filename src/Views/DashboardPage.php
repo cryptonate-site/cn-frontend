@@ -17,7 +17,7 @@ class DashboardPage extends DashboardView
 {
     public function __construct()
     {
-        parent::__construct("dashboard/index.tpl");
+        parent::__construct("index.tpl");
         parent::$engine->assign("graph_json", $this->get_graph_data());
         parent::$engine->assign("page_name", "Dashboard");
     }
