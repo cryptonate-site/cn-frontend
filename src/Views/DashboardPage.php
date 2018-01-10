@@ -12,16 +12,17 @@ namespace Me\Views;
 use DateTime;
 use Illuminate\Database\Capsule\Manager as DB;
 use Me\Services\AuthService;
-use Smarty;
 
-class DashboardPage extends View
+class DashboardPage extends DashboardView
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct("dashboard/index.tpl");
+        parent::$engine->assign("graph_json", $this->get_graph_data());
+        parent::$engine->assign("page_name", "Dashboard");
     }
 
-    public function get_graph_data() {
+    private function get_graph_data() {
         $user = AuthService::get_user();
         $db_data = DB::select("SELECT COUNT(1) TransactionCount, DATE(creation_time) DateOnly FROM `transactions`" .
             " WHERE to_email=:userID AND order_status=2 AND creation_time >= SUBDATE(CURRENT_DATE, INTERVAL 7 DAY) GROUP BY DateOnly", ["userID"=>$user->id]);
@@ -64,13 +65,5 @@ class DashboardPage extends View
             $current_date->add(new \DateInterval("P1D"));
         }
         return $dates;
-    }
-
-    public function execute($args = null) {
-        foreach($args as $k=>$v) {
-            parent::$engine->assign($k, $v);
-        }
-        parent::$engine->assign("graph_json", $this->get_graph_data());
-        parent::$engine->display('dashboard/index.tpl');
     }
 }
