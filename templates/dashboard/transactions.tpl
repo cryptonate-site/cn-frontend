@@ -1,4 +1,5 @@
 {extends file="dashboard/base.tpl"}
+{block name="page_name"}Donations{/block}
 {block name="dash_content"}
     <div class="row">
         <div class="col-lg-12">
