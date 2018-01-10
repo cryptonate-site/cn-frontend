@@ -23,8 +23,10 @@ class TemplateView extends View
 
     public function execute($args = null)
     {
-        foreach($args as $k=>$v) {
-            parent::$engine->assign($k, $v);
+        if($args != null) {
+            foreach ($args as $k => $v) {
+                parent::$engine->assign($k, $v);
+            }
         }
         parent::$engine->display($this->template);
     }

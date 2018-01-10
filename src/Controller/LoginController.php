@@ -9,10 +9,11 @@
 namespace Me\Controller;
 
 
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Me\Models\LoginToken;
 use Me\Services\NonceService;
 use Me\Views\LoginPage;
-use Illuminate\Database\Capsule\Manager as Capsule;
+
 class LoginController extends Controller
 {
     protected $prefix = "/";
@@ -35,7 +36,7 @@ class LoginController extends Controller
                     setcookie("login_token", $token->token, time() + (3600 * 24 * 30));
                     setcookie("userid", $val->id, time() + (3600 * 24 * 30));
                 }
-                $response->redirect("/dashboard")->send();
+                $response->redirect("/dashboard/")->send();
             } else {
                 $login = new LoginPage();
                 $login->execute(['warning' => "Bad username or password."]);
