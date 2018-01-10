@@ -13,11 +13,11 @@
             <form action="/dashboard/settings" method="POST">
                 <div class="form-group">
                     <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first-name" class="form-control" maxlength="16" value="{{$user->first_name}}">
+                    <input type="text" id="first_name" name="first_name" class="form-control" maxlength="16" value="{{$user->first_name}}">
                 </div>
                 <div class="form-group">
                     <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last-name" class="form-control" maxlength="16" value="{{$user->last_name}}">
+                    <input type="text" id="last_name" name="last_name" class="form-control" maxlength="16" value="{{$user->last_name}}">
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>

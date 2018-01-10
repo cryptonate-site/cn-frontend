@@ -40,9 +40,9 @@ class DashboardController extends Controller
 
     public function post_settings($req, $res) {
         $user = AuthService::get_user();
-        if(!empty($req["first-name"]) && !empty($req["last-name"]) && !empty($req->email)) {
-            $user->first_name = $req["first-name"];
-            $user->last_name = $req["last-name"];
+        if(!empty($req->first_name) && !empty($req->last_name) && !empty($req->email)) {
+            $user->first_name = $req->first_name;
+            $user->last_name = $req->last_name;
             $user->email = $req->email;
             if(!empty($user->password)) {
                 $user->password = password_hash($req->password, PASSWORD_BCRYPT);
