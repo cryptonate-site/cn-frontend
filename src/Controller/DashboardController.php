@@ -8,6 +8,7 @@
 
 namespace Me\Controller;
 
+use Me\Models\Transaction;
 use Me\Services\AuthService;
 use Me\Views\DashboardPage;
 use Me\Views\DashboardView;
@@ -18,7 +19,7 @@ class DashboardController extends Controller
     protected $prefix = "/dashboard/";
     protected $protected_routes = [
         "GET:" => "dashboard",
-        "GET:donations" => "donations",
+        "GET:donations/[i:page]?" => "donations",
         "GET:settings" => "get_settings",
         "POST:settings" => "post_settings"
     ];
@@ -28,14 +29,21 @@ class DashboardController extends Controller
         $page->execute();
     }
 
-    public function donations() {
+    public function donations($req, $res) {
+        if(!isset($req->page)) {
+            $req->page = 0;
+        }
         $page = new DashboardView("transactions.tpl");
-        $page->execute(["page_name", "Donations Overview"]);
+        $items = Transaction::where("for_id", AuthService::get_user()->id)->offset($req->page * 10)->limit(10)->get();
+        $page->execute(["page_name", "Donations Overview",
+            "transaction_array" => $items,
+            "current_page" => $req->page,
+            "has_next", $items->count() > 9]);
     }
 
     public function get_settings() {
         $page = new DashboardView("settings.tpl");
-        $page->execute(["page_name" => "Settings"]);
+        $page->execute();
     }
 
     public function post_settings($req, $res) {
