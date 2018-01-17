@@ -35,10 +35,11 @@ class DashboardController extends Controller
         }
         $page = new DashboardView("transactions.tpl");
         $items = Transaction::where("for_id", AuthService::get_user()->id)->offset($req->page * 10)->limit(10)->get();
-        $page->execute(["page_name", "Donations Overview",
+        $count_minus_current = $items->count() - ($req->page * 10);
+        $page->execute(["page_name" => "Donations Overview",
             "transaction_array" => $items,
             "current_page" => $req->page,
-            "has_next", $items->count() > 9]);
+            "has_next" => $count_minus_current > 9]);
     }
 
     public function get_settings() {
@@ -52,11 +53,14 @@ class DashboardController extends Controller
             $user->first_name = $req->first_name;
             $user->last_name = $req->last_name;
             $user->email = $req->email;
-            if(!empty($user->password)) {
+            if(!empty($req->password)) {
                 $user->password = password_hash($req->password, PASSWORD_BCRYPT);
             }
             $user->save();
             $page = new DashboardView("settings.tpl");
+            if(!empty($req->password)) {
+                $res->redirect("/logout");
+            }
             $page->execute(["success"=>"Settings saved successfully!"]);
         } else {
             $page = new DashboardView("settings.tpl");

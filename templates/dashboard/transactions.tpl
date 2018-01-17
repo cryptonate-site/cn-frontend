@@ -25,7 +25,7 @@
                                 {else}
                             <tr>
                         {/if}
-                        <td>{$transaction->creation_date}</td>
+                        <td>{$transaction->creation_time}</td>
                         <td>{{$transaction->from_user}}</td>
                         <td>{{$transaction->amount}}</td>
                         <td>{{$transaction->currency}}</td>
