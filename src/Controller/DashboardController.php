@@ -34,7 +34,7 @@ class DashboardController extends Controller
             $req->page = 0;
         }
         $page = new DashboardView("transactions.tpl");
-        $items = Transaction::where("to_email", AuthService::get_user()->id)->offset($req->page * 10)->limit(10)->get();
+        $items = Transaction::where("to_email", AuthService::get_user()->id)->orderBy("creation_time")->offset($req->page * 10)->limit(10)->get();
         $count_minus_current = $items->count() - ($req->page * 10);
         $page->execute(["page_name" => "Donations Overview",
             "transaction_array" => $items,
