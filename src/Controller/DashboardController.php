@@ -39,7 +39,7 @@ class DashboardController extends Controller
         $page->execute(["page_name" => "Donations Overview",
             "transaction_array" => $items,
             "current_page" => $req->page,
-            "has_next" => $count_minus_current > 9]);
+            "has_next" => $count_minus_current > 0]);
     }
 
     public function get_settings() {
