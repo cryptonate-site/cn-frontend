@@ -1,4 +1,4 @@
-var socket = io("http://gardenbox.duper51.me");
+var socket = io("https://gardenbox.duper51.me", {path: "/api/socket.io"});
 socket.on('connect', function () {console.log("connected")});
 socket.on('event', function (data) {console.log(data)});
 socket.on('disconnect', function () {console.log("disconnected")});
