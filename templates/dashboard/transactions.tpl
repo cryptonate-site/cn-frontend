@@ -37,10 +37,10 @@
             <nav aria-label="pages">
                 <ul class="pager">
                     {if $current_page gt 0}
-                        <li class="previous"><a href="/dashboard/donations/{$current_page - 1}"><span aria-hidden="true">&larr;</span> Older</a></li>
+                        <li class="previous"><a href="/dashboard/donations/{$current_page - 1}"><span aria-hidden="true">&larr;</span> Newer</a></li>
                     {/if}
                     {if $has_next}
-                        <li class="next"><a href="/dashboard/donations/{$current_page + 1}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                        <li class="next"><a href="/dashboard/donations/{$current_page + 1}">Older <span aria-hidden="true">&rarr;</span></a></li>
                     {/if}
                 </ul>
             </nav>
