@@ -9,6 +9,8 @@
 namespace Me\Views;
 
 
+use Me\Services\AuthService;
+
 class TemplateView extends View
 {
     private $template = null;
@@ -28,6 +30,7 @@ class TemplateView extends View
                 parent::$engine->assign($k, $v);
             }
         }
+        parent::$engine->assign("is_logged_in", AuthService::is_authed());
         parent::$engine->display($this->template);
     }
 }
