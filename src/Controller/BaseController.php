@@ -11,6 +11,7 @@ namespace Me\Controller;
 
 use Me\Models\User;
 use Me\Views\DonatePage;
+use Me\Views\TemplateView;
 
 class BaseController extends Controller
 {
@@ -22,7 +23,8 @@ class BaseController extends Controller
     ];
 
     public function index() {
-        echo "meme";
+        $page = new TemplateView("index.tpl");
+        $page->execute();
     }
 
     public function donate($req, $res) {

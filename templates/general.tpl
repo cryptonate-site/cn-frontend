@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{block name=title}Cryptonate{/block}</title>
+    <title>{block name=title}Cryptonate{/block} - {block name=page_name}Home{/block}</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/datepicker3.css" rel="stylesheet">
