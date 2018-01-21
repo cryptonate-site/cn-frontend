@@ -11,7 +11,7 @@
     <title>Cryptonate - Home</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="alt-data/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="alt-data/font-awesome/css/font-awesome.min.css">
