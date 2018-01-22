@@ -31,7 +31,7 @@ $("#submit-btn").on('click',function () {
     btn.text("Submitting...");
     $.ajax({
         type: "POST",
-        url: "/api/transaction/start-flow/" + forUser, //TODO: Implement forUserName
+        url: "/api/transaction/start-flow/" + forUser,
         data: JSON.stringify(dataOut),
         dataType: "json",
         success: function (resp) {
@@ -39,7 +39,7 @@ $("#submit-btn").on('click',function () {
             $("#btc-wallet-id").text(resp.send_to);
             $("#confirmation-date").text(new Date(Date.now() + (resp.timeout * 1000)).toTimeString());
             $("#payment-modal").modal("show");
-            chkTxnLoop = setInterval(function () {check_transaction(resp.orderId);}, 1000);
+            chkTxnLoop = setInterval(function () {check_transaction(resp.orderId);}, 4000);
         },
         error: function () {
             alert("An error occurred creating your transaction! Please try again later.");
