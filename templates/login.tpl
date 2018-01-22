@@ -3,6 +3,14 @@
 {block name=custom_link}
     <link rel="stylesheet" href="/css/footer.css">
 {/block}
+{block name=extra_scripts}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("loginform").submit();
+        }
+    </script>
+{/block}
 {block name=body}
     <div class="container">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -45,7 +53,12 @@
                         <!-- Button -->
 
                         <div class="col-sm-12 controls">
-                            <input id="btn-login" type="submit" class="btn btn-success" value="Login">
+                            <button
+                                    class="g-recaptcha btn btn-success"
+                                    data-sitekey="6LeS4EEUAAAAAOmJDCCU2u9j-28HmxIkpaKYpWT7"
+                                    data-callback="onSubmit">
+                                Login
+                            </button>
                         </div>
                     </div>
                     <input type="hidden" name="nonce" value="{$nonce}">

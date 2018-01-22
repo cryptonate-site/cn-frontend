@@ -25,7 +25,7 @@
                     <div id="login-alert" class="alert alert-danger col-sm-12">{$warning}</div>
                 {/if}
 
-                <form id="registerform" class="form-horizontal" role="form" action="/login" method="post">
+                <form id="registerform" class="form-horizontal" role="form" action="/register" method="post">
                     <div class="form-group">
                         <label for="username">Set Your Email</label>
                         <div style="margin-bottom: 25px" class="input-group">
