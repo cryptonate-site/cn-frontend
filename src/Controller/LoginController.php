@@ -25,16 +25,16 @@ class LoginController extends Controller
     ];
 
     public function process_login($request, $response) {
-        if($request->param("g-recaptcha-response", null) === null) {
-            $login = new LoginPage();
-            $login->execute(['warning' => "Please solve the captcha."]);
-            return;
-        }
-        if(!RecaptchaService::validateCaptcha($request->param("g-recaptcha-response"))) {
-            $login = new LoginPage();
-            $login->execute(['warning' => "Please try the Recaptcha again."]);
-        }
         if(isset($request->username) && isset($request->password) && isset($request->nonce)) {
+            if($request->param("g-recaptcha-response", null) === null) {
+                $login = new LoginPage();
+                $login->execute(['warning' => "Please solve the captcha."]);
+                return;
+            }
+            if(!RecaptchaService::validateCaptcha($request->param("g-recaptcha-response"))) {
+                $login = new LoginPage();
+                $login->execute(['warning' => "Please try the Recaptcha again."]);
+            }
             $val = Capsule::table("users")->where('email', $request->username)->first();
             if($val != null && password_verify($request->password, $val->password)) {
                 $_SESSION['login'] = $val->id;
