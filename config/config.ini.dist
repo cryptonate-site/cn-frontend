@@ -5,3 +5,5 @@ port=3306
 username=root
 password=password
 db=database
+[recaptcha]
+secret=the-secret

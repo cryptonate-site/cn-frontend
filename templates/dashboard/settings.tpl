@@ -20,6 +20,10 @@
                     <input type="text" id="last_name" name="last_name" class="form-control" maxlength="16" value="{{$user->last_name}}">
                 </div>
                 <div class="form-group">
+                    <label for="stream_name">Stream Name</label>
+                    <input disabled type="text" id="stream_name" name="stream_name" class="form-control" maxlength="16" value="{{$user->stream_name}}">
+                </div>
+                <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" class="form-control" value="{{$user->email}}">
                 </div>

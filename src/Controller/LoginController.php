@@ -12,6 +12,7 @@ namespace Me\Controller;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Me\Models\LoginToken;
 use Me\Services\NonceService;
+use Me\Services\RecaptchaService;
 use Me\Views\LoginPage;
 
 class LoginController extends Controller
@@ -24,6 +25,15 @@ class LoginController extends Controller
     ];
 
     public function process_login($request, $response) {
+        if($request->param("g-recaptcha-response", null) === null) {
+            $login = new LoginPage();
+            $login->execute(['warning' => "Please solve the captcha."]);
+            return;
+        }
+        if(!RecaptchaService::validateCaptcha($request->param("g-recaptcha-response"))) {
+            $login = new LoginPage();
+            $login->execute(['warning' => "Please try the Recaptcha again."]);
+        }
         if(isset($request->username) && isset($request->password) && isset($request->nonce)) {
             $val = Capsule::table("users")->where('email', $request->username)->first();
             if($val != null && password_verify($request->password, $val->password)) {

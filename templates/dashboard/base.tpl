@@ -13,7 +13,7 @@
         </div>
         <div class="divider"></div>
         <ul class="nav menu">
-            <li class="active"><a href="/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li class="active"><a href="/dashboard/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
             <li><a href="/dashboard/alertbox"><em class="fa fa-calendar">&nbsp;</em> Alertbox</a></li>
             <li><a href="/dashboard/donations"><em class="fa fa-bar-chart">&nbsp;</em> Donations</a></li>
             <li><a href="/dashboard/settings"><em class="fa fa-cogs">&nbsp;</em> Settings</a></li>
@@ -24,7 +24,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="#">
+                <li><a href="/dashboard/">
                         <em class="fa fa-home"></em>
                     </a></li>
                 <li class="active">{block name="page_name"}{/block}</li>
