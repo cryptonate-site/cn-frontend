@@ -13,10 +13,10 @@
         </div>
         <div class="divider"></div>
         <ul class="nav menu">
-            <li class="active"><a href="/dashboard/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-            <li><a href="/dashboard/alertbox"><em class="fa fa-calendar">&nbsp;</em> Alertbox</a></li>
-            <li><a href="/dashboard/donations"><em class="fa fa-bar-chart">&nbsp;</em> Donations</a></li>
-            <li><a href="/dashboard/settings"><em class="fa fa-cogs">&nbsp;</em> Settings</a></li>
+            <li {if $dashboard}class="active"{/if}><a href="/dashboard/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li {if $alertbox}class="active"{/if}><a href="/dashboard/alertbox"><em class="fa fa-calendar">&nbsp;</em> Alertbox</a></li>
+            <li {if $donations}class="active"{/if}><a href="/dashboard/donations"><em class="fa fa-bar-chart">&nbsp;</em> Donations</a></li>
+            <li {if $settings}class="active"{/if}><a href="/dashboard/settings"><em class="fa fa-cogs">&nbsp;</em> Settings</a></li>
             <li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->

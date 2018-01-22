@@ -1,5 +1,6 @@
 {extends file='dashboard/base.tpl'}
 {block name="page_name"}Dashboard{/block}
+{assign "dashboard" true}
 {block name='dash_content'}
 
         <div class="row">
