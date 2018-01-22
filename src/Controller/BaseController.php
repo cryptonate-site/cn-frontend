@@ -74,7 +74,7 @@ class BaseController extends Controller
             $svc->validateParam("password", "Fill out the password field with at least 8 characters")->isLen(8, 64);
             $svc->validateParam("first_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);
             $svc->validateParam("last_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);
-            $svc->validateParam("url", "Fill out the URL field")->notNull()->isUrl();
+            $svc->validateParam("url", "Fill out the URL field")->notNull();
         } catch(Exception $e) {
             $page = new TemplateView("register.tpl");
             $page->execute(["warning" => $e->getMessage()]);
