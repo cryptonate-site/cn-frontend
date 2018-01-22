@@ -1,9 +1,9 @@
 {extends file="general.tpl"}
-{block name=title}Cryptonate - Login{/block}
+{block name=page_name}Login{/block}
 {block name=custom_link}
     <link rel="stylesheet" href="/css/footer.css">
 {/block}
-{block name=extra-scripts}
+{block name="extra-scripts"}
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         function onSubmit(token) {
