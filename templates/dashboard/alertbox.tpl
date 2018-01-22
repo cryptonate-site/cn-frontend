@@ -13,10 +13,10 @@
             </div>
             <div class="form-group">
                 <label for="first_name">Alertbox URL</label>
-                <input type="text" id="first_name" name="first_name" class="form-control" maxlength="16" value="/api/alertbox/{{$alertbox_key}}">
+                <input type="text" id="first_name" name="first_name" class="form-control" maxlength="16" value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
                 <form action="/dashboard/alertbox" method="POST">
                     <input type="hidden" name="action" value="regen_key">
-                    <input type="button" name="submit" value="Regenerate URL">
+                    <input type="submit" name="submit" value="Regenerate URL">
                 </form>
             </div>
         </div>

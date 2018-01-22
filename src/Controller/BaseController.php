@@ -36,12 +36,11 @@ class BaseController extends Controller
 
     public function donate($req, $res) {
         $page = new DonatePage();
-        $user = null;
-        $user = User::where('email', $req->streamer)->first();
+        $user = User::where('stream_name', $req->streamer)->first();
         if($user == null) {
             echo "todo: streamer not found page";
         } else {
-            $page->execute(['userID' => $user->id, 'streamer_name' => $user->first_name . " " . $user->last_name]);
+            $page->execute(['userID' => $user->id, 'streamer_name' => $user->stream_name]);
         }
     }
 

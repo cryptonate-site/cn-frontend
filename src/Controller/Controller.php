@@ -84,7 +84,7 @@ class Controller
 
     public function login($req, $res) {
         if(AuthService::is_authed()) {
-            $res->redirect("/dashboard")->send();
+            $res->redirect("/dashboard/")->send();
             return;
         }
         $page = new LoginPage();

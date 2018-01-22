@@ -37,10 +37,12 @@ class DashboardController extends Controller
         $page->execute(["alertbox_key" => AuthService::get_user()->alertboxApiKey]);
     }
 
-    public function post_alertbox() {
-        $user = AuthService::get_user();
-        $user->alertboxApiKey = NonceService::generate_nonce();
-        $user->save();
+    public function post_alertbox($req) {
+        if($req->action == "regen_key") {
+            $user = AuthService::get_user();
+            $user->alertboxApiKey = NonceService::generate_nonce();
+            $user->save();
+        }
         $page = new DashboardView("alertbox.tpl");
         $page->execute(["alertbox_key" => $user->alertboxApiKey]);
     }
@@ -68,6 +70,7 @@ class DashboardController extends Controller
             $user->first_name = $req->first_name;
             $user->last_name = $req->last_name;
             $user->email = $req->email;
+            $user->stream_name = $req->stream_name;
             if(!empty($req->password)) {
                 $user->password = password_hash($req->password, PASSWORD_BCRYPT);
             }
