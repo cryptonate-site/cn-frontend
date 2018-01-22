@@ -7,3 +7,5 @@ password=password
 db=database
 [recaptcha]
 secret=the-secret
+[register]
+disabled=false

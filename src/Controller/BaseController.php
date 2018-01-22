@@ -9,6 +9,7 @@
 namespace Me\Controller;
 
 
+use Me\Kernel;
 use Me\Models\User;
 use Me\Services\AuthService;
 use Me\Services\NonceService;
@@ -52,6 +53,11 @@ class BaseController extends Controller
     }
 
     public function process_register($req, $res) {
+        if(Kernel::getInstance()->config['register']['disabled']) {
+            $page = new TemplateView("register.tpl");
+            $page->execute(["warning" => "Registration is closed at the moment. Try again later!"]);
+            return;
+        }
         if(AuthService::is_authed()) {
             $res->redirect("/dashboard/")->send();
             return;
