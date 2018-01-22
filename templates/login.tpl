@@ -3,7 +3,7 @@
 {block name=custom_link}
     <link rel="stylesheet" href="/css/footer.css">
 {/block}
-{block name=extra_scripts}
+{block name=extra-scripts}
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         function onSubmit(token) {
