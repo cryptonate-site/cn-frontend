@@ -76,7 +76,9 @@ class BaseController extends Controller
             $svc->validateParam("last_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);
             $svc->validateParam("url", "Fill out the URL field")->notNull()->isUrl();
         } catch(Exception $e) {
-
+            $page = new TemplateView("register.tpl");
+            $page->execute(["warning" => $e->getMessage()]);
+            return;
         }
         $user = new User();
         $user->email = $req->username;
