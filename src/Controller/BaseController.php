@@ -9,6 +9,7 @@
 namespace Me\Controller;
 
 
+use Exception;
 use Me\Kernel;
 use Me\Models\User;
 use Me\Services\AuthService;
@@ -53,7 +54,7 @@ class BaseController extends Controller
         $page->execute();
     }
 
-    public function process_register($req, $res) {
+    public function process_register($req, $res, $svc) {
         if(Kernel::getInstance()->config['register']['disabled']) {
             $page = new TemplateView("register.tpl");
             $page->execute(["warning" => "Registration is closed at the moment. Try again later!"]);
@@ -67,6 +68,15 @@ class BaseController extends Controller
             $page = new TemplateView("register.tpl");
             $page->execute(["warning" => "Recaptcha incorrect, try again."]);
             return;
+        }
+        try {
+            $svc->validateParam("username", "Fill out the email field.")->isEmail();
+            $svc->validateParam("password", "Fill out the password field with at least 8 characters")->isLen(8);
+            $svc->validateParam("first_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);
+            $svc->validateParam("last_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);
+            $svc->validateParam("url", "Fill out the URL field")->notNull()->isUrl();
+        } catch(Exception $e) {
+
         }
         $user = new User();
         $user->email = $req->username;
