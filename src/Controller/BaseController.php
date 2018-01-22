@@ -24,6 +24,7 @@ class BaseController extends Controller
     protected $routes = [
         "GET:" => "index",
         "GET:donate/[i:id]" => "donate",
+        "GET:donate/[:email]" => "donate",
         "GET:register" => "register",
         "POST:register" => "process_register"
     ];
@@ -35,7 +36,11 @@ class BaseController extends Controller
 
     public function donate($req, $res) {
         $page = new DonatePage();
-        $user = User::where('id', $req->id)->first();
+        $user = null;
+        if($req->id)
+            $user = User::where('id', $req->id)->first();
+        if($req->email)
+            $user = User::where('email', $req->email)->first();
         if($user == null) {
             echo "todo: streamer not found page";
         } else {
