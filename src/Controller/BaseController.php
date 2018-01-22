@@ -41,7 +41,7 @@ class BaseController extends Controller
         if($user == null) {
             echo "todo: streamer not found page";
         } else {
-            $page->execute(['userID' => $req->id, 'streamer_name' => $user->first_name . " " . $user->last_name]);
+            $page->execute(['userID' => $user->id, 'streamer_name' => $user->first_name . " " . $user->last_name]);
         }
     }
 
