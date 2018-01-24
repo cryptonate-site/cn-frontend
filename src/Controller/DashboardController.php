@@ -65,8 +65,8 @@ class DashboardController extends Controller
     }
 
     public function post_settings($req, $res) {
-        $user = AuthService::get_user();
-        if(!empty($req->first_name) && !empty($req->last_name) && !empty($req->email)) {
+        try {
+            $user = AuthService::get_user();
             $user->first_name = $req->first_name;
             $user->last_name = $req->last_name;
             $user->email = $req->email;
@@ -80,7 +80,7 @@ class DashboardController extends Controller
                 $res->redirect("/logout");
             }
             $page->execute(["success"=>"Settings saved successfully!"]);
-        } else {
+        } catch(\Exception $e) {
             $page = new DashboardView("settings.tpl");
             $page->execute(['warning'=>"All fields must be filled out."]);
         }
