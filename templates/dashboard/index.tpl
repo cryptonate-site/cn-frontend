@@ -4,7 +4,7 @@
 {block name='dash_content'}
 
     <div class="row">
-        <div class="col-md-3 col-xs-12">
+        <div class="col-md-4 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Balance
@@ -48,7 +48,7 @@
 
         var balanceData = {$balance_json};
 
-        var balctx = document.getElementById("currency-chart");
+        var balctx = document.getElementById("currency-chart").getContext("2d");
 
         var balance_chart = new Chart(balctx).Doughnut(balanceData, {
             cutoutPercentage: 80,
