@@ -39,7 +39,7 @@
     <script>
         var lnectx = document.getElementById("line-chart").getContext("2d");
         lineChartData = {$graph_json};
-        var line_chart = new Chart({
+        var line_chart = new Chart(lnectx, {
             type: "line",
             data: lineChartData,
             responsive: true,
