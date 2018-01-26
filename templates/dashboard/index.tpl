@@ -37,42 +37,51 @@
 {/block}
 {block name='extra-scripts'}
     <script>
-        Chart.pluginService.register({
-            beforeDraw: function(chart) {
-                var width = chart.chart.width,
-                    height = chart.chart.height,
-                    ctx = chart.chart.ctx;
-
-                ctx.restore();
-                var fontSize = (height / 114).toFixed(2);
-                ctx.font = fontSize + "em sans-serif";
-                ctx.textBaseline = "middle";
-
-                var text = "75%",
-                    textX = Math.round((width - ctx.measureText(text).width) / 2),
-                    textY = height / 2;
-
-                ctx.fillText(text, textX, textY);
-                ctx.save();
-            }
-        });
-
         var lnectx = document.getElementById("line-chart").getContext("2d");
         lineChartData = {$graph_json};
-        var line_chart = new Chart(lnectx).Line(lineChartData, {
+        var line_chart = new Chart({
+            type: "line",
+            data: lineChartData,
             responsive: true,
-            scaleLineColor: "rgba(0,0,0,.2)",
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            scaleFontColor: "#c5c7cc"
+            options: {
+                scaleLineColor: "rgba(0,0,0,.2)",
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleFontColor: "#c5c7cc"
+            }
         });
 
         var balanceData = {$balance_json};
 
         var balctx = document.getElementById("currency-chart").getContext("2d");
 
-        var balance_chart = new Chart(balctx).Doughnut(balanceData, {
-            cutoutPercentage: 80,
-            responsive: true
+        var balance_chart = new Chart(balctx, {
+            type: "doughnut",
+            data: balanceData,
+            options: {
+                cutoutPercentage: 80,
+                responsive: true
+            },
+            plugins: [
+                {
+                    beforeDraw: function(chart) {
+                        var width = chart.chart.width,
+                            height = chart.chart.height,
+                            ctx = chart.chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 114).toFixed(2);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "75%",
+                            textX = Math.round((width - ctx.measureText(text).width) / 2),
+                            textY = height / 2;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }
+            ]
         });
 
     </script>
