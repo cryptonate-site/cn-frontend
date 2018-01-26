@@ -12,6 +12,8 @@
                 {/if}
             </div>
             <form action="/dashboard/settings" method="POST">
+                <input type="hidden" name="action" value="set_settings">
+                <input type="hidden" name="nonce" value="{{$nonce}}">
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <input type="text" id="first_name" name="first_name" class="form-control" maxlength="16" value="{{$user->first_name}}">
@@ -28,13 +30,29 @@
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" class="form-control" value="{{$user->email}}">
                 </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <button type="submit" class="btn btn-success btn-block">Save Settings</button>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <button type="reset" class="btn btn-default btn-block">Reset</button>
+                    </div>
+                </div>
+            </form>
+            <form action="/dashboard/settings" method="POST">
+                <input type="hidden" name="action" value="set_password">
+                <input type="hidden" name="nonce" value="{{$nonce}}">
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" id="password" name="confirm_password" class="form-control">
+                </div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <button type="submit" class="btn btn-success">Save Settings</button>
+                        <button type="submit" class="btn btn-success btn-block">Save Settings</button>
                     </div>
                     <div class="col-sm-offset-2 col-sm-5">
                         <button type="reset" class="btn btn-default btn-block">Reset</button>

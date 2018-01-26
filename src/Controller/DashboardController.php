@@ -61,28 +61,48 @@ class DashboardController extends Controller
 
     public function get_settings() {
         $page = new DashboardView("settings.tpl");
-        $page->execute();
+        $page->execute(['nonce'=>NonceService::initialize_nonce()]);
     }
 
-    public function post_settings($req, $res) {
-        try {
-            $user = AuthService::get_user();
-            $user->first_name = $req->first_name;
-            $user->last_name = $req->last_name;
-            $user->email = $req->email;
-            $user->stream_name = $req->stream_name;
-            if(!empty($req->password)) {
-                $user->password = password_hash($req->password, PASSWORD_BCRYPT);
-            }
-            $user->save();
+    public function post_settings($req, $res, $svc) {
+        if(!NonceService::verify_nonce($req)) {
             $page = new DashboardView("settings.tpl");
-            if(!empty($req->password)) {
-                $res->redirect("/logout");
+            $page->execute(['warning'=>"Please reenter this information."]);
+        }
+        if($req->action == "set_settings") {
+            try {
+                $svc->validateParam("first_name")->notNull()->isLength(1,16);
+                $svc->validateParam("last_name")->notNull()->isLength(1,16);
+                $svc->validateParam("email")->notNull()->isLength(1,32)->isEmail();
+                $svc->validateparam("stream_name")->notNull()->isLength(1,32);
+                $user = AuthService::get_user();
+                $user->first_name = $req->first_name;
+                $user->last_name = $req->last_name;
+                $user->email = $req->email;
+                $user->stream_name = $req->stream_name;
+                $user->save();
+                $page = new DashboardView("settings.tpl");
+                $page->execute(["success"=>"Settings saved successfully!"]);
+            } catch(\Exception $e) {
+                $page = new DashboardView("settings.tpl");
+                $page->execute(['warning'=>$e->getMessage()]);
             }
-            $page->execute(["success"=>"Settings saved successfully!"]);
-        } catch(\Exception $e) {
+        } else if($req->action == "set_password") {
+            try {
+                $svc->validateParam("password")->notNull()->isLength(8, 64);
+                $svc->validateParam("password_confirm")->notNull();
+                if($req->password != $req->password_confirm) {
+                    $page = new DashboardView("settings.tpl");
+                    $page->execute(['warning'=>"Passwords must match!"]);
+                }
+
+            } catch(\Exception $e) {
+                $page = new DashboardView("settings.tpl");
+                $page->execute(['warning'=>$e->getMessage()]);
+            }
+        } else {
             $page = new DashboardView("settings.tpl");
-            $page->execute(['warning'=>"All fields must be filled out."]);
+            $page->execute(['warning'=>"Invalid request."]);
         }
     }
 }
