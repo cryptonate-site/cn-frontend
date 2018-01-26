@@ -98,6 +98,9 @@ class DashboardController extends Controller
                 }
                 $user = AuthService::get_user();
                 $user->password = password_hash($req->password, PASSWORD_BCRYPT);
+                $user->save();
+                $page = new DashboardView("settings.tpl");
+                $page->execute(["success"=>"Settings saved successfully!"]);
             } catch(\Exception $e) {
                 $page = new DashboardView("settings.tpl");
                 $page->execute(['warning'=>$e->getMessage()]);
