@@ -71,10 +71,10 @@ class DashboardController extends Controller
         }
         if($req->action == "set_settings") {
             try {
-                $svc->validateParam("first_name")->notNull()->isLength(1,16);
-                $svc->validateParam("last_name")->notNull()->isLength(1,16);
-                $svc->validateParam("email")->notNull()->isLength(1,32)->isEmail();
-                $svc->validateparam("stream_name")->notNull()->isLength(1,32);
+                $svc->validateParam("first_name")->notNull()->isLen(1,16);
+                $svc->validateParam("last_name")->notNull()->isLen(1,16);
+                $svc->validateParam("email")->notNull()->isLen(1,32)->isEmail();
+                $svc->validateparam("stream_name")->notNull()->isLen(1,32);
                 $user = AuthService::get_user();
                 $user->first_name = $req->first_name;
                 $user->last_name = $req->last_name;
@@ -89,7 +89,7 @@ class DashboardController extends Controller
             }
         } else if($req->action == "set_password") {
             try {
-                $svc->validateParam("password")->notNull()->isLength(8, 64);
+                $svc->validateParam("password")->notNull()->isLen(8, 64);
                 $svc->validateParam("password_confirm")->notNull();
                 if($req->password != $req->password_confirm) {
                     $page = new DashboardView("settings.tpl");
