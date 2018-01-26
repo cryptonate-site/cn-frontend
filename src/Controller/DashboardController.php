@@ -90,12 +90,13 @@ class DashboardController extends Controller
         } else if($req->action == "set_password") {
             try {
                 $svc->validateParam("password")->notNull()->isLen(8, 64);
-                $svc->validateParam("password_confirm")->notNull();
+                $svc->validateParam("confirm_password")->notNull();
                 if($req->password != $req->password_confirm) {
                     $page = new DashboardView("settings.tpl");
                     $page->execute(['warning'=>"Passwords must match!"]);
                 }
-
+                $user = AuthService::get_user();
+                $user->password = password_hash($req->password, PASSWORD_BCRYPT);
             } catch(\Exception $e) {
                 $page = new DashboardView("settings.tpl");
                 $page->execute(['warning'=>$e->getMessage()]);

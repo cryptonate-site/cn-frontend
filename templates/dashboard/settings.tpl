@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Confirm Password</label>
-                    <input type="password" id="password" name="confirm_password" class="form-control">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
