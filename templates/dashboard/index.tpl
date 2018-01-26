@@ -51,7 +51,8 @@
         var balctx = document.getElementById("currency-chart");
 
         var balance_chart = new Chart(balctx).Doughnut(balanceData, {
-            cutoutPercentage: 80
+            cutoutPercentage: 80,
+            responsive: true
         });
 
     </script>
