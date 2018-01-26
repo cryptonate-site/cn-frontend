@@ -37,28 +37,23 @@
 {/block}
 {block name='extra-scripts'}
     <script>
-        Chart.types.Doughnut.extend({
-            name: "DoughnutTextInside",
-            showTooltip: function() {
-                this.chart.ctx.save();
-                Chart.types.Doughnut.prototype.showTooltip.apply(this, arguments);
-                this.chart.ctx.restore();
-            },
-            draw: function() {
-                Chart.types.Doughnut.prototype.draw.apply(this, arguments);
+        Chart.pluginService.register({
+            beforeDraw: function(chart) {
+                var width = chart.chart.width,
+                    height = chart.chart.height,
+                    ctx = chart.chart.ctx;
 
-                var width = this.chart.width,
-                    height = this.chart.height;
-
+                ctx.restore();
                 var fontSize = (height / 114).toFixed(2);
-                this.chart.ctx.font = fontSize + "em Verdana";
-                this.chart.ctx.textBaseline = "middle";
+                ctx.font = fontSize + "em sans-serif";
+                ctx.textBaseline = "middle";
 
-                var text = "82%",
-                    textX = Math.round((width - this.chart.ctx.measureText(text).width) / 2),
+                var text = "75%",
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
                     textY = height / 2;
 
-                this.chart.ctx.fillText(text, textX, textY);
+                ctx.fillText(text, textX, textY);
+                ctx.save();
             }
         });
 
