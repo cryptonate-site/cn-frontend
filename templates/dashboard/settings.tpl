@@ -39,6 +39,7 @@
                     </div>
                 </div>
             </form>
+            <h2>Password Settings</h2>
             <form action="/dashboard/settings" method="POST">
                 <input type="hidden" name="action" value="set_password">
                 <input type="hidden" name="nonce" value="{{$nonce}}">
