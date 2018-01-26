@@ -11,6 +11,7 @@ namespace Me\Views;
 
 use DateTime;
 use Illuminate\Database\Capsule\Manager as DB;
+use Me\Models\Ledger;
 use Me\Services\AuthService;
 
 class DashboardPage extends DashboardView
@@ -19,7 +20,41 @@ class DashboardPage extends DashboardView
     {
         parent::__construct("index.tpl");
         parent::$engine->assign("graph_json", $this->get_graph_data());
+        parent::$engine->assign("balance_json", $this->get_balances());
         parent::$engine->assign("page_name", "Dashboard");
+    }
+
+    private function get_balances() {
+        $ledger = Ledger::where("user_id", AuthService::get_user()->id)->first();
+        $response = [
+            "datasets" => [
+                "data" => [
+                    [
+                        "value" => $ledger->btc,
+                        "color" => "#FFB119"
+                    ],
+                    [
+                        "value" => $ledger->bch,
+                        "color" => "#8DC451"
+                    ],
+                    [
+                        "value" => $ledger->eth,
+                        "color" => "#6F7CBA"
+                    ],
+                    [
+                        "value" => $ledger->ltc,
+                        "color" => "#B5B5B5"
+                    ]
+                ],
+            ],
+            "labels" => [
+                "BTC",
+                "BCH",
+                "ETH",
+                "LTC"
+            ]
+        ];
+        return json_encode($response);
     }
 
     private function get_graph_data() {
@@ -37,8 +72,8 @@ class DashboardPage extends DashboardView
             "datasets" => [
                 [
                     "label"=> "Donations",
-                    "fillColor" => "rgba(220,220,220,0.2)",
-                    "strokeColor" => "rgba(220,220,220,1)",
+                    "fillColor" => "rgba(178,219,161,0.2)",
+                    "strokeColor" => "rgba(178,219,161,1)",
                     "pointColor" => "rgba(220,220,220,1)",
                     "pointStrokeColor" => "#fff",
                     "pointHighlightFill" => "#fff",

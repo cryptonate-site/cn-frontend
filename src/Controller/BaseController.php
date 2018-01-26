@@ -11,6 +11,7 @@ namespace Me\Controller;
 
 use Exception;
 use Me\Kernel;
+use Me\Models\Ledger;
 use Me\Models\User;
 use Me\Services\AuthService;
 use Me\Services\NonceService;
@@ -87,6 +88,8 @@ class BaseController extends Controller
         $user->url = $req->stream_url;
         $user->alertboxApiKey = NonceService::generate_nonce();
         $user->save();
+        $ledger = new Ledger();
+        $ledger->user_id = $user->id;
         $res->redirect("login")->send();
     }
 }
