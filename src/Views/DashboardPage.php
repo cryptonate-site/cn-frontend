@@ -72,12 +72,8 @@ class DashboardPage extends DashboardView
             "datasets" => [
                 [
                     "label"=> "Donations",
-                    "fillColor" => "rgba(178,219,161,0.2)",
-                    "strokeColor" => "rgba(178,219,161,1)",
-                    "pointColor" => "rgba(220,220,220,1)",
-                    "pointStrokeColor" => "#fff",
-                    "pointHighlightFill" => "#fff",
-                    "pointHighlightStroke" => "rgba(220,220,220,1)",
+                    "backgroundColor" => "rgba(178,219,161,0.2)",
+                    "borderColor" => "rgba(178,219,161,1)",
                     "data" => []
                 ]
             ]
