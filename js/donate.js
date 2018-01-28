@@ -8,7 +8,7 @@ function check_transaction(txn_id) {
         success: function(resp) {
             console.log(resp);
             if(resp.completed === true) {
-                clearInterval(chkTxnLoop)
+                clearInterval(chkTxnLoop);
                 $("#payment-modal").modal("hide");
                 $("#success-modal").modal("show");
             }

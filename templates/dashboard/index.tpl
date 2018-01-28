@@ -53,7 +53,7 @@
         });
 
         var balanceData = {$balance_json};
-        var totalData = {$total_json}
+        var totalData = {$total_json};
         var balctx = document.getElementById("currency-chart").getContext("2d");
 
         var balance_chart = new Chart(balctx, {
@@ -90,7 +90,7 @@
 
         $.ajax("/api/metrics/calculate_total", {
             method: "POST",
-            data: totalData,
+            data: JSON.stringify(totalData),
             contentType: "application/json",
             complete: function(data) {
                 total = data.amt;
