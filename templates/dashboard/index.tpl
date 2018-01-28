@@ -88,7 +88,7 @@
             ]
         });
 
-        $.ajax("/api/metrics/calculate_total", {
+        $.ajax("/api/metrics/calculate_value", {
             method: "POST",
             data: JSON.stringify(totalData),
             contentType: "application/json",
