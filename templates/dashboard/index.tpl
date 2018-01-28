@@ -37,6 +37,8 @@
 {/block}
 {block name='extra-scripts'}
     <script>
+        var total;
+
         var lnectx = document.getElementById("line-chart").getContext("2d");
         lineChartData = {$graph_json};
         var line_chart = new Chart(lnectx, {
@@ -51,7 +53,7 @@
         });
 
         var balanceData = {$balance_json};
-
+        var totalData = {$total_json}
         var balctx = document.getElementById("currency-chart").getContext("2d");
 
         var balance_chart = new Chart(balctx, {
@@ -64,24 +66,36 @@
             plugins: [
                 {
                     beforeDraw: function(chart) {
-                        var width = chart.chart.width,
-                            height = chart.chart.height,
-                            ctx = chart.chart.ctx;
+                        if(total !== undefined) {
+                            var width = chart.chart.width,
+                                height = chart.chart.height,
+                                ctx = chart.chart.ctx;
 
-                        ctx.restore();
-                        var fontSize = (height / 114).toFixed(2);
-                        ctx.font = fontSize + "em sans-serif";
-                        ctx.textBaseline = "middle";
+                            ctx.restore();
+                            var fontSize = (height / 114).toFixed(2);
+                            ctx.font = fontSize + "em sans-serif";
+                            ctx.textBaseline = "middle";
 
-                        var text = "75%",
-                            textX = Math.round((width - ctx.measureText(text).width) / 2),
-                            textY = height / 2;
+                            var text = total,
+                                textX = Math.round((width - ctx.measureText(text).width) / 2),
+                                textY = height / 2;
 
-                        ctx.fillText(text, textX, textY);
-                        ctx.save();
+                            ctx.fillText(text, textX, textY);
+                            ctx.save();
+                        }
                     }
                 }
             ]
+        });
+
+        $.ajax("/api/metrics/calculate_total", {
+            method: "POST",
+            data: totalData,
+            contentType: "application/json",
+            complete: function(data) {
+                total = data.amt;
+                balance_chart.update();
+            }
         });
 
     </script>

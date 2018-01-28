@@ -19,13 +19,13 @@ class DashboardPage extends DashboardView
     public function __construct()
     {
         parent::__construct("index.tpl");
+        $ledger = $this->get_balances();
         parent::$engine->assign("graph_json", $this->get_graph_data());
-        parent::$engine->assign("balance_json", $this->get_balances());
-        parent::$engine->assign("page_name", "Dashboard");
+        parent::$engine->assign("balance_json", $this->format_balances_chart($ledger));
+        parent::$engine->assign("total_json", $this->format_balances_total($ledger));
     }
 
-    private function get_balances() {
-        $ledger = Ledger::where("user_id", AuthService::get_user()->id)->first();
+    private function format_balances_chart($ledger) {
         $response = [
             "datasets" => [
                 "data" => [
@@ -55,6 +55,32 @@ class DashboardPage extends DashboardView
             ]
         ];
         return json_encode($response);
+    }
+
+    private function format_balances_total($ledger) {
+        $response = [
+            [
+                "currency" => "BTC",
+                "amount" => $ledger->btc
+            ],
+            [
+                "currency" => "BCH",
+                "amount" => $ledger->bch
+            ],
+            [
+                "currency" => "ETH",
+                "amount" => $ledger->eth
+            ],
+            [
+                "currency" => "LTC",
+                "amount" => $ledger->ltc
+            ],
+        ];
+        return json_encode($response);
+    }
+
+    private function get_balances() {
+        return Ledger::where("user_id", AuthService::get_user()->id)->first();
     }
 
     private function get_graph_data() {
