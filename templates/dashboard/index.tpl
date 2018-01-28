@@ -87,7 +87,7 @@
                 }
             ]
         });
-
+        {literal}
         $.ajax("/api/metrics/calculate_value", {
             method: "POST",
             data: {currencies: JSON.stringify(totalData)},
@@ -96,6 +96,6 @@
                 balance_chart.update();
             }
         });
-
+        {/literal}
     </script>
 {/block}
