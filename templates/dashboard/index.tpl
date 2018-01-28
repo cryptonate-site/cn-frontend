@@ -90,8 +90,7 @@
 
         $.ajax("/api/metrics/calculate_value", {
             method: "POST",
-            data: JSON.stringify(totalData),
-            contentType: "application/json",
+            data: {currencies: JSON.stringify(totalData)},
             complete: function(data) {
                 total = data.amt;
                 balance_chart.update();
