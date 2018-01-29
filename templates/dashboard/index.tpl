@@ -37,7 +37,7 @@
 {/block}
 {block name='extra-scripts'}
     <script>
-        var total;
+        var total = "...";
 
         var lnectx = document.getElementById("line-chart").getContext("2d");
         lineChartData = {$graph_json};
@@ -93,7 +93,7 @@
             contentType: "application/json",
             data: JSON.stringify(totalData),
             success: function(data) {
-                total = data.amt;
+                total = "$" + data.amt;
                 balance_chart.update();
             }
         });
