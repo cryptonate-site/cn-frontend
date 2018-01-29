@@ -28,8 +28,8 @@
                         {/if}
                         <td>{$transaction->creation_time}</td>
                         <td>{{$transaction->from_user}}</td>
-                        <td>{{$transaction->amount}}</td>
-                        <td>{{$transaction->currency}}</td>
+                        <td>{$transaction->amount}</td>
+                        <td>{$transaction->currency}</td>
                         </tr>
                     {/foreach}
                     </tbody>

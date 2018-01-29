@@ -61,10 +61,7 @@
             data: balanceData,
             options: {
                 cutoutPercentage: 80,
-                responsive: true,
-                legend: {
-                    display: false
-                }
+                responsive: true
             },
             plugins: [
                 {
@@ -81,7 +78,7 @@
 
                             var text = total,
                                 textX = Math.round((width - ctx.measureText(text).width) / 2),
-                                textY = height / 2;
+                                textY = chart.chartArea.top + ((chart.chartArea.bottom - chart.chartArea.top) / 2);
 
                             ctx.fillText(text, textX, textY);
                             ctx.save();
