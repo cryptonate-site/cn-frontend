@@ -61,7 +61,10 @@
             data: balanceData,
             options: {
                 cutoutPercentage: 80,
-                responsive: true
+                responsive: true,
+                legend: {
+                    display: false
+                }
             },
             plugins: [
                 {
