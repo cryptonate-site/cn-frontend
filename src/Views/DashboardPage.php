@@ -35,10 +35,10 @@ class DashboardPage extends DashboardView
                     $ledger->ltc
                 ],
                 "backgroundColor" => [
-                    window.chartColors.red,
-                    window.chartColors.blue,
-                    window.chartColors.yellow,
-                    window.chartColors.green
+                    "#FFB119",
+                    "#8DC451",
+                    "#6F7CBA",
+                    "#B5B5B5"
                 ]
             ],
             "labels" => [
