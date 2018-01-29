@@ -90,7 +90,7 @@
         {literal}
         $.ajax("/api/metrics/calculate_value", {
             method: "POST",
-            contentType: "application/json"
+            contentType: "application/json",
             data: JSON.stringify(totalData),
             complete: function(data) {
                 total = data.amt;
