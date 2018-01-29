@@ -27,7 +27,7 @@ class DashboardPage extends DashboardView
 
     private function format_balances_chart($ledger) {
         $response = [
-            "datasets" => [
+            "datasets" => [[
                 "data" => [
                     $ledger->btc,
                     $ledger->bch,
@@ -39,9 +39,8 @@ class DashboardPage extends DashboardView
                     "#8DC451",
                     "#6F7CBA",
                     "#B5B5B5"
-                ]
-            ],
-            "labels" => [
+                ]]
+            ], "labels" => [
                 "BTC",
                 "BCH",
                 "ETH",
