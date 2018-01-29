@@ -93,7 +93,7 @@
             contentType: "application/json",
             data: JSON.stringify(totalData),
             success: function(data) {
-                total = "$" + data.amt;
+                total = "$" + data.amt.toFixed(2);
                 balance_chart.update();
             }
         });

@@ -29,23 +29,17 @@ class DashboardPage extends DashboardView
         $response = [
             "datasets" => [
                 "data" => [
-                    [
-                        "value" => $ledger->btc,
-                        "color" => "#FFB119"
-                    ],
-                    [
-                        "value" => $ledger->bch,
-                        "color" => "#8DC451"
-                    ],
-                    [
-                        "value" => $ledger->eth,
-                        "color" => "#6F7CBA"
-                    ],
-                    [
-                        "value" => $ledger->ltc,
-                        "color" => "#B5B5B5"
-                    ]
+                    $ledger->btc,
+                    $ledger->bch,
+                    $ledger->eth,
+                    $ledger->ltc
                 ],
+                "backgroundColor" => [
+                    window.chartColors.red,
+                    window.chartColors.blue,
+                    window.chartColors.yellow,
+                    window.chartColors.green
+                ]
             ],
             "labels" => [
                 "BTC",
