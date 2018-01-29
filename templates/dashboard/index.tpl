@@ -92,8 +92,7 @@
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify(totalData),
-            complete: function(data) {
-                console.log(data);
+            success: function(data) {
                 total = data.amt;
                 balance_chart.update();
             }
