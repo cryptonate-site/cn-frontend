@@ -17,8 +17,8 @@ socket.on("svrerror", function (data) {
 });
 socket.on("payment", function (data) {
    if(data.from !== undefined && data.amount !== undefined) {
-       $("#whodonated").text(data.from);
-       $("#howmuch").text(data.amount + " " + data.currency);
+       $("#name").text(data.from);
+       $("#hasDonated").text(" has donated: " + data.amount + " " + data.currency);
        $("#message").text(data.message);
    }
 });

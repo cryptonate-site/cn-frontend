@@ -1,0 +1,39 @@
+#image {
+
+    text-align: Center
+
+}
+.center {
+
+    text-align: Center
+
+}
+
+#name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 6em;
+    color: #00aee0;
+    margin: 0;
+    -webkit-text-stroke: 2.5px black;
+    text-stroke: 2.5px black;
+}
+
+#hasDonated {
+    font-family: 'Roboto', sans-serif;
+    font-size: 6em;
+    color: #0072ff;
+    margin: 0;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+    text-align: Center
+}
+
+#message {
+    font-family: 'Roboto', sans-serif;
+    font-size: 4em;
+    color: #0072ff;
+    margin: 0;
+    -webkit-text-stroke: 2.5px black;
+    text-stroke: 2.5px black;
+    text-align: Center
+}
