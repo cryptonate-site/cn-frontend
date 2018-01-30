@@ -3,12 +3,14 @@ var paymentQueue = [];
 var paymentFunction = function (data) {
     if(!paymentInProgress) {
         if (data.from !== undefined && data.amount !== undefined) {
+            paymentInProgress = true;
             $("#name").text(data.from);
             $("#hasDonated").text(" has donated: " + data.amount + " " + data.currency);
             $("#message").text(data.message);
             $("#donation-field").fadeIn(1500, function () {
                 window.setTimeout(function () {
                     $("#donation-field").fadeOut(1500, function () {
+                        paymentInProgress = false;
                         if(paymentQueue.length > 0)
                             paymentFunction(paymentQueue.pop());
                     });
