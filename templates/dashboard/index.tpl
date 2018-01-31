@@ -4,27 +4,28 @@
 {block name='dash_content'}
 
     <div class="row">
-        <div class="panel-group"
-        <div class="col-md-4 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Balance
-                    <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-                <div class="panel-body">
-                    <div class="canvas-wrapper">
-                        <canvas class="main-chart" id="currency-chart" height="200" width="600"></canvas>
+        <div class="panel-group">
+            <div class="col-md-4 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Balance
+                        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+                    <div class="panel-body">
+                        <div class="canvas-wrapper">
+                            <canvas class="main-chart" id="currency-chart" height="200" width="600"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-8 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Donations Overview
-                    <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-                <div class="panel-body">
-                    <div class="canvas-wrapper">
-                        <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+            <div class="col-md-8 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Donations Overview
+                        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+                    <div class="panel-body">
+                        <div class="canvas-wrapper">
+                            <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,14 +74,16 @@
                                 height = chart.chart.height,
                                 ctx = chart.chart.ctx;
 
+                            var actualHeight = (chart.chartArea.bottom - chart.chartArea.top);
+
                             ctx.restore();
-                            var fontSize = (height / 114).toFixed(2);
+                            var fontSize = (actualHeight / 114).toFixed(2);
                             ctx.font = fontSize + "em sans-serif";
                             ctx.textBaseline = "middle";
 
                             var text = total,
                                 textX = Math.round((width - ctx.measureText(text).width) / 2),
-                                textY = chart.chartArea.top + ((chart.chartArea.bottom - chart.chartArea.top) / 2);
+                                textY = chart.chartArea.top + (actualHeight / 2);
 
                             ctx.fillText(text, textX, textY);
                             ctx.save();
