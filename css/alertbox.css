@@ -1,39 +1,44 @@
-#image {
+.image-container {
+    margin-left: 45%;
+    width: 10%;
+    height: auto;
+    text-align: center
+}
 
-    text-align: Center
+p {
+    font-family: 'Roboto', sans-serif;
+}
 
+img {
+    width: 100%;
+    height: auto;
 }
 .center {
-
-    text-align: Center
-
+    text-align: center
 }
 
-#name {
-    font-family: 'Roboto', sans-serif;
-    font-size: 6em;
+.name {
+    font-size: 10vh;
     color: #00aee0;
     margin: 0;
-    -webkit-text-stroke: 2.5px black;
-    text-stroke: 2.5px black;
+    -webkit-text-stroke: 0.4vh black;
+    text-stroke: 0.4vh black;
 }
 
-#hasDonated {
-    font-family: 'Roboto', sans-serif;
-    font-size: 6em;
+.hasDonated {
+    font-size: 10vh;
     color: #0072ff;
     margin: 0;
-    -webkit-text-stroke: 2px black;
-    text-stroke: 2px black;
-    text-align: Center
+    -webkit-text-stroke: 0.4vh black;
+    text-stroke: 0.4vh black;
+    text-align: center
 }
 
-#message {
-    font-family: 'Roboto', sans-serif;
-    font-size: 4em;
+.message {
+    font-size: 8vh;
     color: #0072ff;
     margin: 0;
-    -webkit-text-stroke: 2.5px black;
-    text-stroke: 2.5px black;
-    text-align: Center
+    -webkit-text-stroke: 0.3vh black;
+    text-stroke: 0.3vh black;
+    text-align: center
 }
