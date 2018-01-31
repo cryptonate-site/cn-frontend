@@ -11,6 +11,7 @@ namespace Me\Controller;
 
 use Exception;
 use Me\Kernel;
+use Me\Models\AlertboxSetting;
 use Me\Models\Ledger;
 use Me\Models\User;
 use Me\Services\AuthService;
@@ -90,6 +91,10 @@ class BaseController extends Controller
         $user->save();
         $ledger = new Ledger();
         $ledger->user_id = $user->id;
+        $ledger->save();
+        $alertbox = new AlertboxSetting();
+        $alertbox->user_id = $user->id;
+        $alertbox->save();
         $res->redirect("login")->send();
     }
 }

@@ -7,6 +7,7 @@ var paymentFunction = function (data) {
             $("#name").text(data.from);
             $("#hasDonated").text(" has donated: " + data.amount + " " + data.currency);
             $("#message").text(data.message);
+            $("#the-image").attr('src', data.image);
             $("#donation-field").fadeIn(1500, function () {
                 window.setTimeout(function () {
                     $("#donation-field").fadeOut(1500, function () {
