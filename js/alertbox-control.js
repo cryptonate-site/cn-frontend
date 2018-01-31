@@ -11,6 +11,7 @@ var paymentFunction = function (data) {
             $("#donation-field").fadeIn(1500, function () {
                 window.setTimeout(function () {
                     $("#donation-field").fadeOut(1500, function () {
+                        $("#the-image").attr('src', "");
                         paymentInProgress = false;
                         if(paymentQueue.length > 0)
                             paymentFunction(paymentQueue.pop());
