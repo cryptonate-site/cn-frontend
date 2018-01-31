@@ -40,3 +40,17 @@ socket.on("svrerror", function (data) {
     console.error(data);
 });
 socket.on("payment", paymentFunction);
+
+var images = [];
+function preload() {
+    for (i = 0; i < preload.arguments.length; i++) {
+        images[i] = new Image()
+        images[i].src = preload.arguments[i]
+    }
+}
+preload(
+    "/img/btc.png",
+    "/img/bch.png",
+    "/img/eth.png",
+    "/img/ltc.png"
+);
