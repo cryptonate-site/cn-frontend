@@ -31,7 +31,6 @@ var socket = io("https://gardenbox.duper51.me", {
 socket.on('connect', function () {
     console.log("connected");
 });
-socket.on('event', function (data) {console.log(data)});
 socket.on('disconnect', function () {console.log("disconnected")});
 if(listenTo === undefined) {
     console.error("listenTo undefined");
