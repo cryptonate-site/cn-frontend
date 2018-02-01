@@ -1,5 +1,5 @@
 {extends file='general.tpl'}
-{block name=extra-head}
+{block name='extra-head'}
     <link rel="stylesheet" href="/css/alertbox.css">
 {/block}
 {block name=body}
@@ -114,7 +114,7 @@
 {block name='extra-scripts'}
     <script>
         function redraw() {
-            $("#the-image").attr('src', "/css/" + $("#currency").val() + ".png");
+            $("#the-image").attr('src', "/img/" + $("#currency").val().toLowerCase() + ".png");
             $("#name").text($("#from_user").val());
             $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + $("#currency").val());
             $("#the-message").text($("#message").val());
