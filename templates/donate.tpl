@@ -1,6 +1,6 @@
 {extends file='general.tpl'}
 {block name='extra-head'}
-    <link rel="stylesheet" href="/css/alertbox.css">
+    <link rel="stylesheet" href="/css/alertbox-preview.css">
 {/block}
 {block name=body}
     <div class="container">

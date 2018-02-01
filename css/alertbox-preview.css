@@ -1,0 +1,45 @@
+.image-container {
+    margin: auto;
+    width: 10%;
+    height: auto;
+    text-align: center;
+}
+
+#donation-field p {
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 0 6px #000000;
+}
+
+#donation-field img {
+    width: 100%;
+    height: auto;
+}
+.center {
+    text-align: center
+}
+
+.name {
+    font-size: 24px;
+    color: #00aee0;
+    margin: 0;
+    -webkit-text-stroke: 1px black;
+    text-stroke: 1px black;
+}
+
+.hasDonated {
+    font-size: 20px;
+    color: #0072ff;
+    margin: 0;
+    -webkit-text-stroke: 1px black;
+    text-stroke: 1px black;
+    text-align: center
+}
+
+.message {
+    font-size: 16px;
+    color: #0072ff;
+    margin: 0;
+    -webkit-text-stroke: 1px black;
+    text-stroke: 1px black;
+    text-align: center
+}
