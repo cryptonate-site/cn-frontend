@@ -48,7 +48,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Preview</div>
             <div class="panel-body">
-                <div class="container">
+                <div class="container-fluid">
                     <div id="donation-field">
                         <div class="image-container">
                             <img src="/img/eth.png" id="the-image">
