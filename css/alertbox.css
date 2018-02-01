@@ -5,11 +5,11 @@
     text-align: center
 }
 
-p {
+p#donation-field {
     font-family: 'Roboto', sans-serif;
 }
 
-img {
+img#donation-field {
     width: 100%;
     height: auto;
 }

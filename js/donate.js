@@ -11,6 +11,9 @@ function check_transaction(txn_id) {
                 clearInterval(chkTxnLoop);
                 $("#payment-modal").modal("hide");
                 $("#success-modal").modal("show");
+                var btn = $("#submit-btn");
+                btn.prop("disabled", false);
+                btn.text("Continue");
             }
         },
         error: function (resp) {

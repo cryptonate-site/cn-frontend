@@ -1,18 +1,20 @@
 {extends file='general.tpl'}
+{block name=extra-head}
+    <link rel="stylesheet" href="/css/alertbox.css">
+{/block}
 {block name=body}
-    <div class="col-sm-9 col-lg-10 col-lg-offset-1 main">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Donate to {$streamer_name}</h1>
-            </div>
-        </div><!--/.row-->
+    <div class="container">
+        <div class="col-lg-12">
+            <h1 class="page-header">Donate to {$streamer_name}</h1>
+        </div>
+    </div><!--/.row-->
+    <div class="col-xs-12 col-lg-8 main">
         <div class="panel panel-default">
             <div class="panel-heading">Donation Information</div>
             <div class="panel-body">
                 <form id="donate-form">
                     <div class="form-group">
-                        <label for="from_user">Your Name:</label>
+                        <label for="from_user">Your name:</label>
                         <input type="text" class="form-control" id="from_user" name="from_user" placeholder="Name to show on screen">
                     </div>
                     <div class="form-group">
@@ -21,14 +23,14 @@
                     </div>
                     <div class="form-group">
                         <label for="amount">Amount:</label>
-                        <input type="number" class="form-control" id="amount" name="amount" placeholder="Ex: 0.001">
+                        <input type="number" class="form-control" id="amount" name="amount" placeholder="0.001">
                     </div>
                     <div class="form-group">
                         <label for="message">Message:</label>
                         <input type="text" class="form-control" id="message" name="message" placeholder="A heartfelt message">
                     </div>
                     <div class="form-group">
-                        <label for="currency">Crypto Select</label>
+                        <label for="currency">Currency</label>
                         <select class="form-control" name="currency" id="currency">
                             <option value="BTC">Bitcoin [BTC]</option>
                             <option value="BCH">Bitcoin Cash [BCH]</option>
@@ -42,7 +44,25 @@
         </div>
         <button id="submit-btn" type="submit" class="btn btn-primary">Continue</button>
     </div>
-    </div><!--/.main-->
+    <div class="col-xs-12 col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Preview</div>
+            <div class="panel-body">
+                <div class="container">
+                    <div id="donation-field">
+                        <div class="image-container">
+                            <img src="/img/eth.png" id="the-image">
+                        </div>
+                        <p class="center">
+                            <span class="name" id="name"></span>
+                            <span class="hasDonated" id="hasDonated"></span>
+                        </p>
+                        <p class="message" id="the-message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="payment-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -92,6 +112,15 @@
     </div>
 {/block}
 {block name='extra-scripts'}
+    <script>
+        function redraw() {
+            $("#the-image").attr('src', "/css/" + $("#currency").val() + ".png");
+            $("#name").text($("#from_user").val());
+            $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + $("#currency").val());
+            $("#the-message").text($("#message").val());
+        }
+        $("form :input").change(redraw);
+    </script>
     <script>
         var forUser = {{$userID}};
     </script>
