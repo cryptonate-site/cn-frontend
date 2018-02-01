@@ -119,7 +119,7 @@
             $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + $("#currency").val());
             $("#the-message").text($("#message").val());
         }
-        $("form :input").change(redraw);
+        $("form :input").on("keydown", redraw);
     </script>
     <script>
         var forUser = {{$userID}};
