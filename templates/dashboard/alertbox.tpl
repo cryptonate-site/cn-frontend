@@ -1,7 +1,8 @@
 {extends file="dashboard/base.tpl"}
 {block name="page_name"}Alertbox{/block}
 {block name='extra-head'}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.core.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/css/alertify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/css/themes/bootstrap.min.css">
 {/block}
 {assign "page" "alertbox"}
 {block name="dash_content"}
@@ -33,7 +34,7 @@
     </div>
 {/block}
 {block name='extra-scripts'}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/alertify.min.js"></script>
     <script>
         $("#test-donation").click(function () {
             $.ajax("/api/alertbox/execute-test", {
@@ -51,7 +52,7 @@
             });
         });
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="tooltip"]').tooltip({container: "body"})
         }); //init tooltips
     </script>
 {/block}
