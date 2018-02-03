@@ -18,6 +18,8 @@ var paymentFunction = function (data) {
                     });
                 }, 4000);
             })
+        } else {
+            console.error("Discarded invalid message");
         }
     } else {
         paymentQueue.push(data);
@@ -43,8 +45,8 @@ socket.on("payment", paymentFunction);
 
 var images = [];
 function preload() {
-    for (i = 0; i < preload.arguments.length; i++) {
-        images[i] = new Image()
+    for (var i = 0; i < preload.arguments.length; i++) {
+        images[i] = new Image();
         images[i].src = preload.arguments[i]
     }
 }

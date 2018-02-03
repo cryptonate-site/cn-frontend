@@ -43,8 +43,12 @@
                     alertboxKey: "{$user->alertboxApiKey}"
                 },
                 method: "POST",
-                success: function () {
-                    alertify.success("Successfully sent test notification!");
+                success: function (data) {
+                    if(data.success) {
+                        alertify.success("Successfully sent test notification!");
+                    } else {
+                        alertify.error("Internal error occurred.");
+                    }
                 },
                 error: function () {
                     alertify.warning("Failed to send test notification, try again later!");
