@@ -50,5 +50,8 @@
                 }
             });
         });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        }); //init tooltips
     </script>
 {/block}
