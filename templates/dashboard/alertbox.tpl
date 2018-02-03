@@ -3,6 +3,18 @@
 {block name='extra-head'}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/css/alertify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/css/themes/bootstrap.min.css">
+    <style>
+        .blur {
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+            -webkit-filter: url(#blur-filter);
+            filter: url(#blur-filter);
+            -webkit-filter: blur(3px);
+            filter: blur(3px);
+        }
+        .blur-svg {
+            display: none;
+        }
+    </style>
 {/block}
 {assign "page" "alertbox"}
 {block name="dash_content"}
@@ -17,7 +29,13 @@
             </div>
             <div class="form-group">
                 <label for="first_name">Alertbox URL</label>
-                <input type="text" id="first_name" name="first_name" class="form-control" maxlength="16" value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <label class="sr-hidden" for="hide-chkbox">Hide Alertbox URL</label>
+                        <input id="hide-chkbox" type="checkbox" aria-label="...">
+                    </span>
+                    <input id="first_name" type="text" class="form-control blur" aria-label="..." value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
+                </div><!-- /input-group -->
                 <form action="/dashboard/alertbox" method="POST">
                     <input type="hidden" name="action" value="regen_key">
                     <input type="submit" name="submit" class="btn btn-warning" value="Regenerate URL">
@@ -32,6 +50,13 @@
             </div>
         </div>
     </div>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="blur-svg">
+        <defs>
+            <filter id="blur-filter">
+                <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+            </filter>
+        </defs>
+    </svg>
 {/block}
 {block name='extra-scripts'}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/alertify.min.js"></script>
@@ -57,8 +82,11 @@
         });
         $(function () {
             {literal}
-            $('[data-toggle="tooltip"]').tooltip({container: "body"})
+            $('[data-toggle="tooltip"]').tooltip({container: "body"});
             {/literal}
         }); //init tooltips
+        $("#hide-chkbox").change(function () {
+            $("#first_name").toggleClass("blur");
+        });
     </script>
 {/block}
