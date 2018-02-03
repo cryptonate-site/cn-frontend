@@ -24,9 +24,9 @@
             </div>
             <div class="form-group">
                 <h3>Run Tests</h3>
-                <div class="row">
+                <div class="btn-group">
                     <a href="#" id="test-donation" class="btn btn-success">Test Donation</a>
-                    <button data-toggle="tooltip" data-placement="right" title="Executes a test donation and sends the alert to your alertbox!"><span class="glyphicon glyphicon-question-sign"></span></button>
+                    <button data-toggle="tooltip" class="btn btn-default" data-placement="right" title="Executes a test donation and sends the alert to your alertbox!"><span class="glyphicon glyphicon-question-sign"></span></button>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             $.ajax("/api/alertbox/execute-test", {
                 data: {
                     user_id: {$user->id},
-                    alertboxKey: {$user->alertboxApiKey}
+                    alertboxKey: "{$user->alertboxApiKey}"
                 },
                 method: "POST",
                 success: function () {
