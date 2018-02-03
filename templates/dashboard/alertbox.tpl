@@ -1,5 +1,8 @@
 {extends file="dashboard/base.tpl"}
 {block name="page_name"}Alertbox{/block}
+{block name='extra-head'}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.core.min.css">
+{/block}
 {assign "page" "alertbox"}
 {block name="dash_content"}
     <div class="row">
@@ -16,9 +19,36 @@
                 <input type="text" id="first_name" name="first_name" class="form-control" maxlength="16" value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
                 <form action="/dashboard/alertbox" method="POST">
                     <input type="hidden" name="action" value="regen_key">
-                    <input type="submit" name="submit" value="Regenerate URL">
+                    <input type="submit" name="submit" class="btn btn-warning" value="Regenerate URL">
                 </form>
+            </div>
+            <div class="form-group">
+                <h3>Run Tests</h3>
+                <div class="row">
+                    <a href="#" id="test-donation" class="btn btn-success">Test Donation</a>
+                    <button data-toggle="tooltip" data-placement="right" title="Executes a test donation and sends the alert to your alertbox!"><span class="glyphicon glyphicon-question-sign"></span></button>
+                </div>
             </div>
         </div>
     </div>
+{/block}
+{block name='extra-scripts'}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.min.js"></script>
+    <script>
+        $("#test-donation").click(function () {
+            $.ajax("/api/alertbox/execute-test", {
+                data: {
+                    user_id: {$user->id},
+                    alertboxKey: {$user->alertboxApiKey}
+                },
+                method: "POST",
+                success: function () {
+                    alertify.success("Successfully sent test notification!");
+                },
+                error: function () {
+                    alertify.warning("Failed to send test notification, try again later!");
+                }
+            });
+        });
+    </script>
 {/block}

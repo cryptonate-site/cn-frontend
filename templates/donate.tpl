@@ -51,7 +51,7 @@
                 <div class="container-fluid">
                     <div id="donation-field">
                         <div class="image-container">
-                            <img src="/img/eth.png" id="the-image">
+                            <img src="/img/btc.png" id="the-image">
                         </div>
                         <p class="center">
                             <span class="name" id="name"></span>
@@ -114,6 +114,8 @@
 {block name='extra-scripts'}
     <script>
         function redraw() {
+            var updated = $(this);
+            if(updated.id === "currency")
             $("#the-image").attr('src', "/img/" + $("#currency").val().toLowerCase() + ".png");
             $("#name").text($("#from_user").val());
             $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + $("#currency").val());
