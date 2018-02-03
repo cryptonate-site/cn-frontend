@@ -36,6 +36,7 @@
 {block name='extra-scripts'}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/alertify.min.js"></script>
     <script>
+        {literal}
         $("#test-donation").click(function () {
             $.ajax("/api/alertbox/execute-test", {
                 data: {
@@ -54,5 +55,6 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip({container: "body"})
         }); //init tooltips
+        {/literal}
     </script>
 {/block}
