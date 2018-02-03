@@ -30,16 +30,18 @@
             <div class="form-group">
                 <label for="first_name">Alertbox URL</label>
                 <div class="input-group">
-                    <span class="input-group-addon">
-                        <label class="sr-hidden" for="hide-chkbox">Hide Alertbox URL</label>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services." class="input-group-addon">
+                        <label class="sr-only" for="hide-chkbox">Hide Alertbox URL</label>
                         <input id="hide-chkbox" type="checkbox" aria-label="...">
                     </span>
                     <input id="first_name" type="text" class="form-control blur" aria-label="..." value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
+                    <form action="/dashboard/alertbox" method="POST">
+                        <input type="hidden" name="action" value="regen_key">
+                        <span class="input-group-btn">
+                            <input type="submit" name="submit" class="btn btn-warning" value="Regenerate URL">
+                        </span>
+                    </form>
                 </div><!-- /input-group -->
-                <form action="/dashboard/alertbox" method="POST">
-                    <input type="hidden" name="action" value="regen_key">
-                    <input type="submit" name="submit" class="btn btn-warning" value="Regenerate URL">
-                </form>
             </div>
             <div class="form-group">
                 <h3>Run Tests</h3>
