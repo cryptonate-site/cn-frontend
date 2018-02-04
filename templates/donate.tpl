@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label for="from_email">Email:</label>
-                        <input type="email" class="form-control" id="from_email" name="from_email" placeholder="YourEmail@example.com">
+                        <input type="email" class="form-control" id="from_email" name="from_email" placeholder="youremail@example.com">
                     </div>
                     <div class="form-group">
                         <label for="amount">Amount:</label>
@@ -115,8 +115,9 @@
     <script>
         function redraw() {
             var updated = $(this);
-            if(updated.id === "currency")
-            $("#the-image").attr('src', "/img/" + $("#currency").val().toLowerCase() + ".png");
+            if(updated.id === "currency") {
+                $("#the-image").attr('src', "/img/" + $(this.val()) + ".png");
+            }
             $("#name").text($("#from_user").val());
             $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + $("#currency").val());
             $("#the-message").text($("#message").val());

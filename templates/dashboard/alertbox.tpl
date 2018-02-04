@@ -30,17 +30,14 @@
             <div class="form-group">
                 <label for="first_name">Alertbox URL</label>
                 <div class="input-group">
-                    <span data-toggle="tooltip" data-placement="bottom" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services." class="input-group-addon">
+                    <span data-toggle="tooltip" data-placement="bottom" data-html="true" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services." class="input-group-addon">
                         <label class="sr-only" for="hide-chkbox">Hide Alertbox URL</label>
                         <input id="hide-chkbox" type="checkbox" aria-label="...">
                     </span>
                     <input id="first_name" type="text" class="form-control blur" aria-label="..." value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
-                    <form action="/dashboard/alertbox" method="POST">
-                        <input type="hidden" name="action" value="regen_key">
-                        <span class="input-group-btn">
-                            <input type="submit" name="submit" class="btn btn-warning" value="Regenerate URL">
-                        </span>
-                    </form>
+                    <span class="input-group-btn">
+                        <input type="submit" id='submit-regen' name="submit" class="btn btn-warning" value="Regenerate URL">
+                    </span>
                 </div><!-- /input-group -->
             </div>
             <div class="form-group">
@@ -59,6 +56,9 @@
             </filter>
         </defs>
     </svg>
+    <form action="/dashboard/alertbox" method="POST" id="regen_key_form">
+        <input type="hidden" name="action" value="regen_key">
+    </form>
 {/block}
 {block name='extra-scripts'}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.0/alertify.min.js"></script>
@@ -90,5 +90,9 @@
         $("#hide-chkbox").change(function () {
             $("#first_name").toggleClass("blur");
         });
+        $("#submit-regen").click(function (e) {
+            e.preventDefault();
+            $("#regen_key_form").submit();
+        })
     </script>
 {/block}
