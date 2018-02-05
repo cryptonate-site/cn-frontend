@@ -29,7 +29,8 @@ var socket = io("https://gardenbox.duper51.me", {
     path: "/api/socket.io",
     query: {
         roomName: listenTo
-    }
+    },
+    transports: ['websocket']
 });
 socket.on('connect', function () {
     console.log("connected");
