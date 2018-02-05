@@ -15,32 +15,57 @@
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="/css/alertbox-preview.css">
 {/block}
 {assign "page" "alertbox"}
 {block name="dash_content"}
     <div class="row">
-        <div class="col-lg-12">
-            <div class="container">
-                {if isset($warning)}
-                    <div class="alert alert-danger">{$warning}</div>
-                {elseif isset($success)}
-                    <div class="alert alert-success">{$success}</div>
-                {/if}
-            </div>
-            <div class="form-group">
-                <label for="first_name">Alertbox URL</label>
-                <div class="input-group">
-                    <input id="first_name" type="text" class="form-control blur" readonly data-toggle="tooltip" data-placement="bottom" data-html="true" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services. <b>Click to unblur</b>" aria-label="..." value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
-                    <span class="input-group-btn">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Settings</div>
+                <div class="panel-body">
+                    <div class="container">
+                        {if isset($warning)}
+                            <div class="alert alert-danger">{$warning}</div>
+                        {elseif isset($success)}
+                            <div class="alert alert-success">{$success}</div>
+                        {/if}
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">Alertbox URL</label>
+                        <div class="input-group">
+                            <input id="first_name" type="text" class="form-control blur" readonly data-toggle="tooltip" data-placement="bottom" data-html="true" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services. <b>Click to unblur</b>" aria-label="..." value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
+                            <span class="input-group-btn">
                         <input type="submit" id='submit-regen' name="submit" class="btn btn-warning" value="Regenerate URL">
                     </span>
-                </div><!-- /input-group -->
+                        </div><!-- /input-group -->
+                    </div>
+                    <div class="form-group">
+                        <h3>Run Tests</h3>
+                        <div class="btn-group">
+                            <a href="#" id="test-donation" class="btn btn-success">Test Donation</a>
+                            <button data-toggle="tooltip" class="btn btn-default" data-placement="right" title="Executes a test donation and sends the alert to your alertbox!"><span class="glyphicon glyphicon-question-sign"></span></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <h3>Run Tests</h3>
-                <div class="btn-group">
-                    <a href="#" id="test-donation" class="btn btn-success">Test Donation</a>
-                    <button data-toggle="tooltip" class="btn btn-default" data-placement="right" title="Executes a test donation and sends the alert to your alertbox!"><span class="glyphicon glyphicon-question-sign"></span></button>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Preview</div>
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div id="donation-field">
+                            <div class="image-container">
+                                <img src="/img/btc.png" id="the-image">
+                            </div>
+                            <p class="center">
+                                <span class="name" id="name">[name]</span>
+                                <span class="hasDonated" id="hasDonated"> has donated: [amt] [currency]</span>
+                            </p>
+                            <p class="message" id="the-message">[msg]</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

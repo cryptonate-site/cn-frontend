@@ -54,10 +54,10 @@
                             <img src="/img/btc.png" id="the-image">
                         </div>
                         <p class="center">
-                            <span class="name" id="name"></span>
-                            <span class="hasDonated" id="hasDonated"></span>
+                            <span class="name" id="name">[name]</span>
+                            <span class="hasDonated" id="hasDonated"> has donated: [amt] [currency]</span>
                         </p>
-                        <p class="message" id="the-message"></p>
+                        <p class="message" id="the-message">[msg]</p>
                     </div>
                 </div>
             </div>
@@ -115,14 +115,25 @@
     <script>
         function redraw() {
             var updated = $(this);
-            if(updated.id === "currency") {
-                $("#the-image").attr('src', "/img/" + $(this.val()) + ".png");
+            switch(updated.attr('id').toLowerCase()) {
+                case "currency":
+                    $("#the-image").attr('src', "/img/" + updated.val() + ".png");
+                    $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + updated.val());
+                    break;
+                case "from_user":
+                    $("#name").text(updated.val());
+                    break;
+                case "amount":
+                    $("#hasDonated").text(" has donated: " + updated.val() + " " + $("#currency").val());
+                    break;
+                case "message":
+                    $("#the-message").text(updated.val());
+                    break;
+                default:
+                    console.warn("unknown updated section. please help :(");
             }
-            $("#name").text($("#from_user").val());
-            $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + $("#currency").val());
-            $("#the-message").text($("#message").val());
         }
-        $("form :input").on("keydown", redraw);
+        $("form :input").on("keyup", redraw);
     </script>
     <script>
         var forUser = {{$userID}};
