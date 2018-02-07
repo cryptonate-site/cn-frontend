@@ -117,7 +117,7 @@
             var updated = $(this);
             switch(updated.attr('id').toLowerCase()) {
                 case "currency":
-                    $("#the-image").attr('src', "/img/" + updated.val() + ".png");
+                    $("#the-image").attr('src', "/img/" + updated.val().toLowerCase() + ".png");
                     $("#hasDonated").text(" has donated: " + $("#amount").val() + " " + updated.val());
                     break;
                 case "from_user":
