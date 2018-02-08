@@ -52,23 +52,25 @@ class DashboardPage extends DashboardView
 
     private function format_balances_total($ledger) {
         $response = [
-            [
-                "currency" => "BTC",
-                "amount" => $ledger->btc
-            ],
-            [
-                "currency" => "BCH",
-                "amount" => $ledger->bch
-            ],
-            [
-                "currency" => "ETH",
-                "amount" => $ledger->eth
-            ],
-            [
-                "currency" => "LTC",
-                "amount" => $ledger->ltc
-            ],
-        ];
+            "to_currency" => "USD",
+            "currencies" => [
+                [
+                    "currency" => "BTC",
+                    "amount" => $ledger->btc
+                ],
+                [
+                    "currency" => "BCH",
+                    "amount" => $ledger->bch
+                ],
+                [
+                    "currency" => "ETH",
+                    "amount" => $ledger->eth
+                ],
+                [
+                    "currency" => "LTC",
+                    "amount" => $ledger->ltc
+                ],
+            ]];
         return json_encode($response);
     }
 

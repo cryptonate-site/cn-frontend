@@ -103,6 +103,5 @@
             }
         });
         {/literal}
-        $("#")
     </script>
 {/block}
