@@ -127,6 +127,7 @@ class BaseController extends Controller
             if(count($data) < 2) {
                 $view = new TemplateView("activate.tpl");
                 $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+                return;
             }
             $user = User::where('id', $data[0])->where('registerToken', $data[1])->first();
             if($user) {
