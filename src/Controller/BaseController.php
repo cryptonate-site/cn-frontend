@@ -112,7 +112,7 @@ class BaseController extends Controller
     public function activate($req, $res) {
         if(isset($req->key)) {
             $data = preg_split(":", $req->key, 1);
-            $user = User::where('id', $data[0])->where('activation_key', $data[1])->first();
+            $user = User::where('id', $data[0])->where('registerToken', $data[1])->first();
             if($user) {
                 $user->activated = 1;
                 $user->save();
