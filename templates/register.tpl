@@ -29,13 +29,13 @@
                     <div class="form-group">
                         <label for="username">Set Your Email</label>
                         <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                             <input id="username" type="text" class="form-control" name="username" value=""
                                    placeholder="email">
                         </div>
                         <label for="stream_name">Set Your Stream Name</label>
                         <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input id="stream_name" type="text" class="form-control" name="stream_name" value=""
                                    placeholder="email">
                         </div>
