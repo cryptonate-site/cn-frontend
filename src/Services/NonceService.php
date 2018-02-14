@@ -19,6 +19,7 @@ class NonceService
     }
 
     public static function verify_nonce($request) {
+        $_SESSION['nonce'] = null;
         return $request->nonce == $_SESSION['nonce'];
     }
 

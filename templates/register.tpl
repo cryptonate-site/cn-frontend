@@ -55,7 +55,7 @@
 
                         <div>
                             <button
-                                    class="g-recaptcha btn btn-success"
+                                    class="g-recaptcha btn btn-success btn-block"
                                     data-sitekey="6LeS4EEUAAAAAOmJDCCU2u9j-28HmxIkpaKYpWT7"
                                     data-callback="onSubmit">
                                 Register
