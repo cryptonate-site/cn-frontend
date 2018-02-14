@@ -5,6 +5,8 @@ port=3306
 username=root
 password=password
 db=database
+[sendgrid]
+api_key=undefined
 [recaptcha]
 secret=the-secret
 [register]

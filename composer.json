@@ -13,7 +13,8 @@
     "klein/klein": "v2.1.2",
     "smarty/smarty": "v3.1.31",
     "illuminate/database": "5.4.x-dev",
-    "ircmaxell/password-compat": "1.0.3"
+    "ircmaxell/password-compat": "1.0.3",
+    "sendgrid/sendgrid": "~6.0"
   },
   "autoload": {
     "psr-4": {

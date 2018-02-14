@@ -47,16 +47,13 @@
 
                         <label for="last_name">Last Name</label>
                         <input id="last_name" type="text" maxlength="16" class="form-control" name="last_name" placeholder="last name">
-
-                        <label for="stream_url">Stream URL</label>
-                        <input id="stream_url" type="text" maxlength="64" class="form-control" name="stream_url" placeholder="twitch.com/pewdiepie">
                     </div>
 
 
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
 
-                        <div class="col-sm-12 controls">
+                        <div>
                             <button
                                     class="g-recaptcha btn btn-success"
                                     data-sitekey="6LeS4EEUAAAAAOmJDCCU2u9j-28HmxIkpaKYpWT7"
