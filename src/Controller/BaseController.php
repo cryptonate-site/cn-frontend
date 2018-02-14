@@ -112,7 +112,7 @@ class BaseController extends Controller
     public function activate($req, $res) {
         if(isset($req->key)) {
             $data = preg_split(":", $req->key, 1);
-            $user = User::where('id', $data[0])->first();
+            $user = User::where('id', $data[0])->where('activation_key', $data[1])->first();
             if($user) {
                 $user->activated = 1;
                 $user->save();
@@ -120,7 +120,7 @@ class BaseController extends Controller
                 $view->execute(['title' => "Activation Successful", 'body' => "Activation successful. You may now login."]);
             } else {
                 $view = new TemplateView("activate.tpl");
-                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user! Are you sure you entered the correct URL?"]);
+                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
             }
         } else {
             $view = new TemplateView("activate.tpl");

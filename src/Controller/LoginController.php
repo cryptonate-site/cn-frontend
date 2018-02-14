@@ -34,8 +34,14 @@ class LoginController extends Controller
             if(!RecaptchaService::validateCaptcha($request->param("g-recaptcha-response"))) {
                 $login = new LoginPage();
                 $login->execute(['warning' => "Please try the Recaptcha again."]);
+                return;
             }
             $val = Capsule::table("users")->where('email', $request->username)->first();
+            if($val->activated !== 1) {
+                $login = new LoginPage();
+                $login->execute(['warning' => "Please validate your email before logging in."]);
+                return;
+            }
             if($val != null && password_verify($request->password, $val->password)) {
                 $_SESSION['login'] = $val->id;
                 if($request->remember) {
