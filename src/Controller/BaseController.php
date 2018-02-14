@@ -86,6 +86,7 @@ class BaseController extends Controller
         if(User::where('email', $req->username)->first()) {
             $page = new TemplateView("register.tpl");
             $page->execute(['warning' => "Email already registered."]);
+            return;
         }
         $user = new User();
         $user->email = $req->username;
