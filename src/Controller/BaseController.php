@@ -74,6 +74,7 @@ class BaseController extends Controller
             return;
         }
         try {
+            $svc->validateParam("stream_name", "Provide a stream name (at least 3 characters, a-z, -_")->notNull()->isLen(3,16)->isRegex("[a-zA-Z0-9-_]*");
             $svc->validateParam("username", "Fill out the email field.")->isEmail();
             $svc->validateParam("password", "Fill out the password field with at least 8 characters")->isLen(8, 64);
             $svc->validateParam("first_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);
@@ -88,11 +89,16 @@ class BaseController extends Controller
             $page->execute(['warning' => "Email already registered."]);
             return;
         }
+        if(User::where('stream_name', $req->stream_name)->first()) {
+            $page = new TemplateView("register.tpl");
+            $page->execute(['warning' => "Stream name already registered."]);
+        }
         $user = new User();
         $user->email = $req->username;
         $user->password = password_hash($req->password, PASSWORD_BCRYPT);
         $user->first_name = $req->first_name;
         $user->last_name = $req->last_name;
+        $user->stream_name = $req->stream_name;
         $user->alertboxApiKey = NonceService::generate_nonce();
         $user->registerToken = NonceService::generate_nonce();
         $user->save();
