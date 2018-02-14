@@ -74,7 +74,7 @@ class BaseController extends Controller
             return;
         }
         try {
-            $svc->validateParam("stream_name", "Provide a stream name (at least 3 characters, a-z, -_")->notNull()->isLen(3,16)->isRegex("[a-zA-Z0-9-_]*");
+            $svc->validateParam("stream_name", "Provide a stream name (at least 3 characters, a-z, -_)")->notNull()->isLen(3,16)->isRegex("/[a-zA-Z0-9-_]*/");
             $svc->validateParam("username", "Fill out the email field.")->isEmail();
             $svc->validateParam("password", "Fill out the password field with at least 8 characters")->isLen(8, 64);
             $svc->validateParam("first_name", "Fill out the name field (a-z, max 16 characters)")->notNull()->isAlnum()->isLen(1,16);

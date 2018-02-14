@@ -37,7 +37,7 @@
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input id="stream_name" type="text" class="form-control" name="stream_name" value=""
-                                   placeholder="email">
+                                   placeholder="stream name">
                         </div>
                         <label for="password">Set Your Password</label>
                         <div style="margin-bottom: 25px" class="input-group">
