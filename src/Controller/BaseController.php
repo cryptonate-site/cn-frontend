@@ -92,6 +92,7 @@ class BaseController extends Controller
         if(User::where('stream_name', $req->stream_name)->first()) {
             $page = new TemplateView("register.tpl");
             $page->execute(['warning' => "Stream name already registered."]);
+            return;
         }
         $user = new User();
         $user->email = $req->username;
