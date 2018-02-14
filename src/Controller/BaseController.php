@@ -123,7 +123,11 @@ class BaseController extends Controller
 
     public function activate($req, $res) {
         if(isset($req->key)) {
-            $data = preg_split(":", $req->key, 1);
+            $data = preg_split("/:/", $req->key, 1);
+            if(count($data) < 2) {
+                $view = new TemplateView("activate.tpl");
+                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+            }
             $user = User::where('id', $data[0])->where('registerToken', $data[1])->first();
             if($user) {
                 $user->activated = 1;
