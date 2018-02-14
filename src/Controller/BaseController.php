@@ -126,7 +126,7 @@ class BaseController extends Controller
             $data = preg_split("/:/", $req->key, 1);
             if(count($data) < 2) {
                 $view = new TemplateView("activate.tpl");
-                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+                $view->execute(['title' => "Activation Unsuccessful", 'body' => "1Could not find your user or activation key! Are you sure you entered the correct URL?"]);
                 return;
             }
             $user = User::where('id', $data[0])->where('registerToken', $data[1])->first();
@@ -137,11 +137,11 @@ class BaseController extends Controller
                 $view->execute(['title' => "Activation Successful", 'body' => "Activation successful. You may now login."]);
             } else {
                 $view = new TemplateView("activate.tpl");
-                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+                $view->execute(['title' => "Activation Unsuccessful", 'body' => "2Could not find your user or activation key! Are you sure you entered the correct URL?"]);
             }
         } else {
             $view = new TemplateView("activate.tpl");
-            $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user! Are you sure you entered the correct URL?"]);
+            $view->execute(['title' => "Activation Unsuccessful", 'body' => "3Could not find your user! Are you sure you entered the correct URL?"]);
         }
     }
 }
