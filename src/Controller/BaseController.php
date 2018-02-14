@@ -123,7 +123,7 @@ class BaseController extends Controller
 
     public function activate($req, $res) {
         if(isset($req->key)) {
-            $data = preg_split("/:/", $req->key, 1);
+            $data = preg_split("/:/", $req->key, 2);
             if(count($data) < 2) {
                 $view = new TemplateView("activate.tpl");
                 $view->execute(['title' => "Activation Unsuccessful", 'body' => "1Could not find your user or activation key! Are you sure you entered the correct URL?"]);
