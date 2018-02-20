@@ -61,6 +61,7 @@
                 data: JSON.stringify(accountTotals),
                 success: function(data) {
                     total = "$" + data.amt.toFixed(2);
+                    $("#total").text(total + " " + accountTotals.to_currency);
                 }
             });
         }
