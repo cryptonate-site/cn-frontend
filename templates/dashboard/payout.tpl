@@ -19,10 +19,10 @@
                             <input type="hidden" id="payout_currency" name="payout_currency" value="BTC">
                             <div class="btn-group btn-group-justified">
                                 <div id="currency_select">
-                                    <button id="btc" class="btn btn-default active" type="button" value="BTC">
-                                    <button id="eth" class="btn btn-default" type="button" value="ETH">
-                                    <button id="ltc" class="btn btn-default" type="button" value="LTC">
-                                    <button id="bch" class="btn btn-default" type="button" value="BCH">
+                                    <button id="btc" class="btn btn-default active" type="button" value="BTC">BTC</button>
+                                    <button id="eth" class="btn btn-default" type="button" value="ETH">ETH</button>
+                                    <button id="ltc" class="btn btn-default" type="button" value="LTC">LTC</button>
+                                    <button id="bch" class="btn btn-default" type="button" value="BCH">BCH</button>
                                 </div>
                             </div>
                         </div>
