@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="total" class="form-control">Payout Total</label>
-
+                            <h3 class="text-center" id="total"></h3>
                         </div>
                     </form>
                 </div>
@@ -51,7 +51,8 @@
             currencies.removeClass("active");
             $(this).addClass("active");
             $("#payout_currency").val(this.value.toUpperCase());
-
+            accountTotals.to_currency = this.value.toUpperCase();
+            update_total();
         });
         function update_total() {
             $.ajax("/api/metrics/calculate_value", {
