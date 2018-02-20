@@ -28,6 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label for="total" class="form-control">Payout Total</label>
+
                         </div>
                     </form>
                 </div>
@@ -38,6 +39,7 @@
 {block name='extra-scripts'}
     <script>
         var accountTotals = {$totals};
+        var total;
         var currencies = $("#currency_select").find(":input");
         currencies.click(function () {
             currencies.removeClass("active");
@@ -45,7 +47,14 @@
             $("#payout_currency").val(this.value.toUpperCase());
         });
         function update_total() {
-            $.ajax("/api/metrics/total_value")
+            $.ajax("/api/metrics/total_value", {
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(accountTotals),
+                success: function(data) {
+                    total = "$" + data.amt.toFixed(2);
+                }
+            });
         }
     </script>
 {/block}

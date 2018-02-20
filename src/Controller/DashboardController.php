@@ -12,6 +12,7 @@ use Me\Models\Transaction;
 use Me\Services\AuthService;
 use Me\Services\NonceService;
 use Me\Views\DashboardPage;
+use Me\Views\DashboardPayoutPage;
 use Me\Views\DashboardView;
 
 
@@ -24,8 +25,14 @@ class DashboardController extends Controller
         "GET:settings" => "get_settings",
         "POST:settings" => "post_settings",
         "GET:alertbox" => "get_alertbox",
-        "POST:alertbox" => "post_alertbox"
+        "POST:alertbox" => "post_alertbox",
+        "GET:payout" => "payouts"
     ];
+
+    public function payouts() {
+        $page = new DashboardPayoutPage();
+        $page->execute();
+    }
 
     public function dashboard() {
         $page = new DashboardPage();

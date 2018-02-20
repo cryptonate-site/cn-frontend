@@ -64,7 +64,8 @@
             options: {
                 cutoutPercentage: 80,
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                scaleBeginAtZero: true
             },
             plugins: [
                 {
