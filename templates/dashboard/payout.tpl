@@ -17,11 +17,17 @@
                         <div class="form-group">
                             <label for="payout_currency" class="form-control">Payout Currency</label>
                             <input type="hidden" id="payout_currency" name="payout_currency" value="BTC">
-                            <div class="btn-group btn-group-justified">
-                                <div id="currency_select">
+                            <div id="currency_select" class="btn-group btn-group-justified">
+                                <div class="btn-group" role="group">
                                     <button id="btc" class="btn btn-default active" type="button" value="BTC">BTC</button>
+                                </div>
+                                <div class="btn-group" role="group">
                                     <button id="eth" class="btn btn-default" type="button" value="ETH">ETH</button>
+                                </div>
+                                <div class="btn-group" role="group">
                                     <button id="ltc" class="btn btn-default" type="button" value="LTC">LTC</button>
+                                </div>
+                                <div class="btn-group" role="group">
                                     <button id="bch" class="btn btn-default" type="button" value="BCH">BCH</button>
                                 </div>
                             </div>
@@ -45,9 +51,10 @@
             currencies.removeClass("active");
             $(this).addClass("active");
             $("#payout_currency").val(this.value.toUpperCase());
+
         });
         function update_total() {
-            $.ajax("/api/metrics/total_value", {
+            $.ajax("/api/metrics/calculate_value", {
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(accountTotals),
