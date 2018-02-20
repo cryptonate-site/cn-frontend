@@ -48,8 +48,8 @@
         var total;
         var currencies = $("#currency_select").find(":input");
         currencies.click(function () {
-            currencies.removeClass("active");
-            $(this).addClass("active");
+            currencies.removeClass("active btn-success").addClass("btn-default");
+            $(this).removeClass("btn-default").addClass("active btn-success");
             $("#payout_currency").val(this.value.toUpperCase());
             accountTotals.to_currency = this.value.toUpperCase();
             update_total();
