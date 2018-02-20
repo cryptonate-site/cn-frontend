@@ -37,7 +37,7 @@ class LoginController extends Controller
                 return;
             }
             $val = Capsule::table("users")->where('email', $request->username)->first();
-            if($val->activated !== 1) {
+            if(!$val || $val->activated !== 1) {
                 $login = new LoginPage();
                 $login->execute(['warning' => "Please validate your email before logging in."]);
                 return;

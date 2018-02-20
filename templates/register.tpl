@@ -25,7 +25,7 @@
                     <div id="login-alert" class="alert alert-danger col-sm-12">{$warning}</div>
                 {/if}
                 {if isset($success)}
-                    <div id="login-alert" class="alert alert-success col-sm-12">{$warning}</div>
+                    <div id="login-alert" class="alert alert-success col-sm-12">{$success}</div>
                 {/if}
 
                 <form id="registerform" class="form-horizontal" role="form" action="/register" method="post">
