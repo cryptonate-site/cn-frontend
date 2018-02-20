@@ -25,7 +25,7 @@ class DashboardPayoutPage extends DashboardView
 
     private function format_balances_total($ledger) {
         $response = [
-            "to_currency" => "USD",
+            "to_currency" => "BTC",
             "currencies" => [
                 [
                     "currency" => "BTC",

@@ -60,10 +60,13 @@
                 contentType: "application/json",
                 data: JSON.stringify(accountTotals),
                 success: function(data) {
-                    total = "$" + data.amt.toFixed(2);
+                    total = data.amt;
                     $("#total").text(total + " " + accountTotals.to_currency);
                 }
             });
         }
+        $(function () {
+            update_total();
+        });
     </script>
 {/block}
