@@ -4,50 +4,46 @@
 {block name='dash_content'}
 
     <div class="row">
-        <div class="panel-group">
-            <div class="col-md-4 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Balance
-                        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-                    <div class="panel-body">
-                        <div class="canvas-wrapper">
-                            <canvas class="main-chart" id="currency-chart" height="200" width="600"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Donations Overview
-                        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-                    <div class="panel-body">
-                        <div class="canvas-wrapper">
-                            <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-                        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Balance
+                    <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="main-chart" id="currency-chart" height="200" width="600"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="panel-group">
-            <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Recent Donations</div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped">
-                                {foreach $transaction_array as $transaction}
-                                    <tr>
-                                        <td>{$transaction->creation_time}</td>
-                                        <td>{{$transaction->from_user}} donated {$transaction->amount} {$transaction->currency}</td>
-                                    </tr>
-                                {/foreach}
-                            </table>
-                        </div>
+        <div class="col-md-8 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Donations Overview
+                    <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
                     </div>
-                    <div class="panel-footer">For more donations, go to the <a href="./donations">donations page</a>.</div>
                 </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Recent Donations</div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            {foreach $transaction_array as $transaction}
+                                <tr>
+                                    <td>{$transaction->creation_time}</td>
+                                    <td>{{$transaction->from_user}} donated {$transaction->amount} {$transaction->currency}</td>
+                                </tr>
+                            {/foreach}
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">For more donations, go to the <a href="./donations">donations page</a>.</div>
             </div>
         </div>
     </div><!--/.row-->
