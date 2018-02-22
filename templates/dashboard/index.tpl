@@ -51,7 +51,7 @@
 {block name='extra-scripts'}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
-        var listenTo = {$alertboxKey};
+        var listenTo = "{$alertboxKey}";
         $(function () {
             function paymentFunction(data) {
                 var table = document.getElementById("recentDonateTable");
