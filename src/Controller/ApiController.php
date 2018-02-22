@@ -38,7 +38,7 @@ class ApiController extends Controller
         $user = AuthService::get_user();
         $ledger = $ledger = Ledger::where("user_id", $user)->first();
         $data = $this->get_user_data($ledger);
-        if($data['amt'] < 50) {
+        if($data->amt < 50) {
             $res->json(['error' => "Not enough currency to payout, minimum $50 USD payout."]);
         } else {
 
