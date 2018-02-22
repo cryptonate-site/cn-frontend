@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="donation_link">Donation Page Link</label>
-                    <p>Based on your stream name, your donation URL will be <a href="https://cryptonate.me/{{$user->stream_name}}">https://cryptonate.me/{{$user->stream_name}}</a></p>
+                    <p>Based on your stream name, your donation URL will be <a href="https://cryptonate.me/donate/{{$user->stream_name}}">https://cryptonate.me/donate/{{$user->stream_name}}</a></p>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
