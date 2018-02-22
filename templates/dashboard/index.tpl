@@ -29,13 +29,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!--/.row-->
-    <div class="row">
-        <div class="panel-group">
             <div class="col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel-head">Recent Donations</div>
+                    <div class="panel-heading">Recent Donations</div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
@@ -53,10 +49,6 @@
             </div>
         </div>
     </div><!--/.row-->
-
-    <div class="col-sm-12">
-    </div>
-    <!--/.main-->
 {/block}
 {block name='extra-scripts'}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
