@@ -24,6 +24,7 @@ class DashboardPage extends DashboardView
         parent::$engine->assign("graph_json", $this->get_graph_data());
         parent::$engine->assign("balance_json", $this->format_balances_chart($ledger));
         parent::$engine->assign("total_json", $this->format_balances_total($ledger));
+        parent::$engine->assign("alertboxKey", AuthService::get_user()->alertboxApiKey);
         parent::$engine->assign("transaction_array", Transaction::where("to_email", AuthService::get_user()->id)->orderBy("creation_time", "desc")->limit(4)->get());
     }
 
