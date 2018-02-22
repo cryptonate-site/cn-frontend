@@ -12,6 +12,7 @@ namespace Me\Controller;
 use Exception;
 use Me\Kernel;
 use Me\Models\AlertboxSetting;
+use Me\Models\BetaToken;
 use Me\Models\Ledger;
 use Me\Models\User;
 use Me\Services\AuthService;
@@ -31,7 +32,8 @@ class BaseController extends Controller
         "GET:register" => "register",
         "POST:register" => "process_register",
         "GET:register/success" => "success_register",
-        "GET:register/activate/[:key]" => "activate"
+        "GET:register/activate/[:key]" => "activate_beta",
+        "POST:register/activate/[:key]" => "activate_beta_submit"
     ];
 
     public function index() {
@@ -121,12 +123,56 @@ class BaseController extends Controller
         $view->execute(['success' => "Success! Please validate your email by clicking the link we sent you!"]);
     }
 
+    public function activate_beta() {
+        $page = new TemplateView("activate_beta.tpl");
+        $page->execute(['title' => "Activate"]);
+    }
+
+    public function activate_beta_submit($req, $res) {
+        if(isset($req->key)) {
+            if(!RecaptchaService::validateCaptcha($req->param("g-recaptcha-response"))) {
+                $page = new TemplateView("activate_beta.tpl");
+                $page->execute(["title" => "Activate", 'warning' =>"Recaptcha incorrect, try again."]);
+                return;
+            }
+            $data = preg_split("/:/", $req->key, 2);
+            if(count($data) < 2) {
+                $view = new TemplateView("activate_beta.tpl");
+                $view->execute(['title' => "Activate", 'warning' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+                return;
+            }
+            $user = User::where('id', $data[0])->where('registerToken', $data[1])->first();
+            $token = BetaToken::where('token', $req->beta_token)->where('activated', 0)->first();
+            if($user) {
+                if($token) {
+                    $user->activated = 1;
+                    $user->save();
+                    $token->activated = 1;
+                    $token->user_id = $user->id;
+                    $token->save();
+                    $view = new TemplateView("activate.tpl");
+                    $view->execute(['title' => "Activation Successful", 'body' => "Activation successful. You may now login."]);
+                } else {
+                    $view = new TemplateView("activate_beta.tpl");
+                    $view->execute(['title' => "Activate", "warning" => "Could not find your beta token. Please try again."]);
+                }
+            } else {
+                $view = new TemplateView("activate_beta.tpl");
+                $view->execute(['title' => "Activate", 'warning' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+            }
+        } else {
+            $view = new TemplateView("activate.tpl");
+            $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user! Are you sure you entered the correct URL?"]);
+        }
+    }
+
     public function activate($req, $res) {
         if(isset($req->key)) {
+            if(isset($req))
             $data = preg_split("/:/", $req->key, 2);
             if(count($data) < 2) {
                 $view = new TemplateView("activate.tpl");
-                $view->execute(['title' => "Activation Unsuccessful", 'body' => "1Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
                 return;
             }
             $user = User::where('id', $data[0])->where('registerToken', $data[1])->first();
@@ -137,11 +183,11 @@ class BaseController extends Controller
                 $view->execute(['title' => "Activation Successful", 'body' => "Activation successful. You may now login."]);
             } else {
                 $view = new TemplateView("activate.tpl");
-                $view->execute(['title' => "Activation Unsuccessful", 'body' => "2Could not find your user or activation key! Are you sure you entered the correct URL?"]);
+                $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user or activation key! Are you sure you entered the correct URL?"]);
             }
         } else {
             $view = new TemplateView("activate.tpl");
-            $view->execute(['title' => "Activation Unsuccessful", 'body' => "3Could not find your user! Are you sure you entered the correct URL?"]);
+            $view->execute(['title' => "Activation Unsuccessful", 'body' => "Could not find your user! Are you sure you entered the correct URL?"]);
         }
     }
 }
