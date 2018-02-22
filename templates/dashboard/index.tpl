@@ -94,19 +94,19 @@
                 path: "/api/socket.io",
                 query: {
                     roomName: listenTo
-                },
+                } ,
                 transports: ['websocket']
-            });
+            } );
             socket.on('connect', function () {
                 console.log("connected");
-            });
-            socket.on('disconnect', function () {console.log("disconnected")});
+            } );
+            socket.on('disconnect', function () { console.log("disconnected") } );
             if(listenTo === undefined) {
                 console.error("listenTo undefined");
             }
             socket.on("svrerror", function (data) {
                 console.error(data);
-            });
+            } );
             socket.on("payment", paymentFunction);
         });
 
