@@ -24,7 +24,7 @@ class ApiController extends Controller
     public function gen_keys($req, $res) {
         for($i = 0; $i < $req->amt; $i++) {
             $token = new BetaToken();
-            $token->token = NonceService::initialize_nonce();
+            $token->token = NonceService::generate_nonce(16);
             $token->save();
         }
     }
