@@ -26,6 +26,7 @@ class ApiController extends Controller
             $token = new BetaToken();
             $token->token = NonceService::generate_nonce(16);
             $token->save();
+            echo $token->token . "<br/>";
         }
     }
 
