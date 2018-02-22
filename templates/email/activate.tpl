@@ -9,7 +9,7 @@
     </p>
     <p>
         If you cannot see the link, copy this one into your browser:
-        https://cryptonate/register/activate/{{$activation_key}}
+        https://cryptonate.me/register/activate/{{$activation_key}}
     </p>
 </div>
 </body>

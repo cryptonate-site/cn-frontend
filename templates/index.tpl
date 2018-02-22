@@ -94,7 +94,7 @@
             new friends!</h2>
         <ul class="list-inline list-social">
             <li class="list-inline-item social-twitter">
-                <a href="#">
+                <a href="https://cryptonate.me/cryptonate_me">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -114,7 +114,7 @@
 
 <footer>
     <div class="container">
-        <p>&copy; 2017 Cryptonate. All Rights Reserved.</p>
+        <p>&copy; 2018 Cryptonate. All Rights Reserved.</p>
         <ul class="list-inline">
             <li class="list-inline-item">
                 <a href="#">Privacy</a>
@@ -123,7 +123,7 @@
                 <a href="#">Terms</a>
             </li>
             <li class="list-inline-item">
-                <a href="#">FAQ</a>
+                <a href="https://cryptonate.freshdesk.com/support/solutions">FAQ</a>
             </li>
         </ul>
     </div>

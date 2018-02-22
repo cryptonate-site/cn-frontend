@@ -14,6 +14,7 @@
             <li {if $page eq "alertbox"}class="active"{/if}><a href="/dashboard/alertbox"><em class="fa fa-calendar">&nbsp;</em> Alertbox</a></li>
             <li {if $page eq "donations"}class="active"{/if}><a href="/dashboard/donations"><em class="fa fa-bar-chart">&nbsp;</em> Donations</a></li>
             <li {if $page eq "settings"}class="active"{/if}><a href="/dashboard/settings"><em class="fa fa-cogs">&nbsp;</em> Settings</a></li>
+            <li><a href="https://cryptonate.freshdesk.com/support/home"><em class="fa fa-question-circle">&nbsp;</em>Support</a></li>
             <li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->
