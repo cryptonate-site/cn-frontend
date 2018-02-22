@@ -69,7 +69,7 @@
                 var yyyy = today.getFullYear();
                 var hh = today.getHours();
                 var MM = today.getMinutes();
-
+                var ss = today.getSeconds();
                 if(dd<10) {
                     dd = '0'+dd
                 }
@@ -80,7 +80,9 @@
                     MM = '0'+MM;
                 if(hh < 10)
                     hh = '0'+hh;
-                today = mm + '/' + dd + '/' + yyyy + " " + hh + ":" + MM;
+                if(ss < 10)
+                    ss = '0'+ss;
+                today = yyyy + '-' + mm + '-' + dd + " " + hh + ":" + MM + ":" + ss;
                 return today;
             }
 

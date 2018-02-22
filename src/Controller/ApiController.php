@@ -8,15 +8,26 @@
 
 namespace Me\Controller;
 
+use Me\Models\BetaToken;
 use Me\Models\Ledger;
 use Me\Services\AuthService;
+use Me\Services\NonceService;
 
 class ApiController extends Controller
 {
     protected $prefix = "/frontapi/";
     protected $routes = [
-        "GET:perform_payout" => "perform_payout"
+        "GET:perform_payout" => "perform_payout",
+        "GET:generate_keys/[i:amt]" => "gen_keys"
     ];
+
+    public function gen_keys($req, $res) {
+        for($i = 0; $i < $req->amt; $i++) {
+            $token = new BetaToken();
+            $token->token = NonceService::initialize_nonce();
+            $token->save();
+        }
+    }
 
     public function perform_payout($req, $res) {
         if(!AuthService::is_authed()) {
