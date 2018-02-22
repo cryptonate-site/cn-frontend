@@ -33,7 +33,7 @@
                 <div class="panel-heading">Recent Donations</div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
+                        <table id="recentDonateTable" class="table table-hover table-striped">
                             {foreach $transaction_array as $transaction}
                                 <tr>
                                     <td>{$transaction->creation_time}</td>
@@ -51,11 +51,13 @@
 {block name='extra-scripts'}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
+        var listenTo = {$alertboxKey};
         $(function () {
             function paymentFunction(data) {
-                var tr = document.createElement("tr");
-                var time = document.createElement("td");
-                var other = document.createElement("td");
+                var table = document.getElementById("recentDonateTable");
+                var tr = table.insertRow(0);
+                var time = tr.insertCell(0);
+                var other = tr.insertCell(1);
                 time.innerText = convertDateToDateTime();
                 other.innerText = data.from + " donated " + data.amount + " " + data.currency;
             }
@@ -71,11 +73,13 @@
                 if(dd<10) {
                     dd = '0'+dd
                 }
-
                 if(mm<10) {
                     mm = '0'+mm
                 }
-
+                if(MM < 10)
+                    MM = '0'+MM;
+                if(hh < 10)
+                    hh = '0'+hh;
                 today = mm + '/' + dd + '/' + yyyy + " " + hh + ":" + MM;
                 return today;
             }
@@ -111,7 +115,7 @@
                 scaleLineColor: "rgba(0,0,0,.2)",
                 scaleGridLineColor: "rgba(0,0,0,.05)",
                 scaleFontColor: "#c5c7cc",
-                scaleBeginAtZero: true
+                scaleBeginAtZero: false
             }
         });
 
