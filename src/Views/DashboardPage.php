@@ -12,6 +12,7 @@ namespace Me\Views;
 use DateTime;
 use Illuminate\Database\Capsule\Manager as DB;
 use Me\Models\Ledger;
+use Me\Models\Transaction;
 use Me\Services\AuthService;
 
 class DashboardPage extends DashboardView
@@ -23,6 +24,7 @@ class DashboardPage extends DashboardView
         parent::$engine->assign("graph_json", $this->get_graph_data());
         parent::$engine->assign("balance_json", $this->format_balances_chart($ledger));
         parent::$engine->assign("total_json", $this->format_balances_total($ledger));
+        parent::$engine->assign("transaction_array", Transaction::where("to_email", AuthService::get_user()->id)->orderBy("creation_time", "desc")->limit(4)->get());
     }
 
     private function format_balances_chart($ledger) {
