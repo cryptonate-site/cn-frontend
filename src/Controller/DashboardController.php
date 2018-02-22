@@ -34,6 +34,10 @@ class DashboardController extends Controller
         $page->execute();
     }
 
+    public function perform_payout() {
+
+    }
+
     public function dashboard() {
         $page = new DashboardPage();
         $page->execute();
