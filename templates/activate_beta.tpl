@@ -22,8 +22,10 @@
                 <p>As a result, we are currently requiring beta codes to activate your account.</p>
                 <p><strong>If you do not have a code </strong>we will be emailing you when we are fully launched!</p>
                 <form method="POST" id="activateform">
-                    <label for="beta_token">Beta Code</label>
-                    <input type="text" id="beta_token" name="beta_token">
+                    <div class="form-group">
+                        <label for="beta_token">Beta Code</label>
+                        <input type="text" id="beta_token" name="beta_token" class="form-control">
+                    </div>
                     <button
                             class="g-recaptcha btn btn-success btn-block"
                             data-sitekey="6LeS4EEUAAAAAOmJDCCU2u9j-28HmxIkpaKYpWT7"
