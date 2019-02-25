@@ -55,7 +55,7 @@
                         <div class="col-sm-12 controls">
                             <button
                                     class="g-recaptcha btn btn-success"
-                                    data-sitekey="6LeS4EEUAAAAAOmJDCCU2u9j-28HmxIkpaKYpWT7"
+                                    data-sitekey="6Ldwn5MUAAAAAGEgrV2hCh0ZfypSra3QcjOeSCLg"
                                     data-callback="onSubmit">
                                 Login
                             </button>
