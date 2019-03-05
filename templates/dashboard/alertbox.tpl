@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="first_name">Alertbox URL</label>
                         <div class="input-group">
-                            <input id="first_name" type="text" class="form-control blur" readonly data-toggle="tooltip" data-placement="bottom" data-html="true" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services. <b>Click to unblur</b>" aria-label="..." value="https://cryptonate.me/api/alertbox/{{$alertbox_key}}">
+                            <input id="first_name" type="text" class="form-control blur" readonly data-toggle="tooltip" data-placement="bottom" data-html="true" title="Show the Alertbox URL. <b>This is sensitive information.</b> Do not give it out to other people or services. <b>Click to unblur</b>" aria-label="..." value="https://cryptonate.duper51.me/api/alertbox/{{$alertbox_key}}">
                             <span class="input-group-btn">
                         <input type="submit" id='submit-regen' name="submit" class="btn btn-warning" value="Regenerate URL">
                     </span>

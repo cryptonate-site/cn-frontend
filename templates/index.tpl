@@ -94,7 +94,7 @@
             new friends!</h2>
         <ul class="list-inline list-social">
             <li class="list-inline-item social-twitter">
-                <a href="https://cryptonate.me/cryptonate_me">
+                <a href="https://cryptonate.duper51.me/cryptonate_me">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>

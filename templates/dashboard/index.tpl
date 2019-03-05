@@ -86,7 +86,7 @@
                 return today;
             }
 
-            var socket = io("https://cryptonate.me", {
+            var socket = io("https://cryptonate.duper51.me", {
                 path: "/api/socket.io",
                 query: {
                     roomName: listenTo
