@@ -17,4 +17,14 @@ class BaseControllerTest extends BaseTest
         $c->index();
         $this->expectOutputRegex("/\<title\>Cryptonate - Home\<\/title\>/");
     }
+
+    public function testDonatePageChecksIfUserExists() {
+        $req = new stdClass();
+
+        $req->streamer = "non_existent_very_long_name";
+
+        $c = new \Me\Controller\BaseController();
+        $c->donate($req, null);
+        $this->expectOutputRegex("/todo\:/");
+    }
 }
