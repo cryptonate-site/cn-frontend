@@ -12,7 +12,8 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 {
     public function __construct() {
         parent::__construct();
-        define("__DOCROOT__", realpath(__DIR__ . "/../"));
+        if(!defined(__DOCROOT__))
+            define("__DOCROOT__", realpath(__DIR__ . "/../"));
         $router = new \Klein\Klein();
         new \Me\Kernel($router);
     }
