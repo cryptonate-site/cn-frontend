@@ -14,7 +14,8 @@
     "smarty/smarty": "v3.1.31",
     "illuminate/database": "5.4.x-dev",
     "ircmaxell/password-compat": "1.0.3",
-    "sendgrid/sendgrid": "~6.0"
+    "sendgrid/sendgrid": "~6.0",
+    "phpunit/phpunit": "8.1.2"
   },
   "autoload": {
     "psr-4": {
